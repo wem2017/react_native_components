@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {BaseColor, Typography, FontWeight} from '@config';
+import {Colors} from '@config';
 
 export default StyleSheet.create({
   default: {
@@ -11,9 +11,7 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
   },
   textDefault: {
-    ...Typography.headline,
-    color: BaseColor.whiteColor,
-    fontWeight: FontWeight.semibold,
+    color: Colors.white,
   },
   outline: {
     borderWidth: 1,

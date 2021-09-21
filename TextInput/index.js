@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextInput, View, I18nManager} from 'react-native';
 import PropTypes from 'prop-types';
-import {BaseStyle, BaseColor, useTheme, useFont} from '@config';
+import {useTheme, useFont, Colors} from '@config';
 
 export default function Index(props) {
   const {colors} = useTheme();
@@ -9,7 +9,7 @@ export default function Index(props) {
   const cardColor = colors.card;
   const {style, success, icon} = props;
   return (
-    <View style={[BaseStyle.textInput, {backgroundColor: cardColor}, style]}>
+    <View>
       <TextInput
         {...props}
         style={{
@@ -21,7 +21,7 @@ export default function Index(props) {
           paddingTop: 5,
           paddingBottom: 5,
         }}
-        placeholderTextColor={success ? BaseColor.grayColor : colors.primary}
+        placeholderTextColor={success ? Colors.white : colors.primary}
         selectionColor={colors.primary}
       />
       {icon}
