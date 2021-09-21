@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '@config';
+import {Colors} from '@configs';
 
 export default StyleSheet.create({
   default: {
@@ -11,7 +11,7 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
   },
   textDefault: {
-    color: Colors.white,
+    // color: Colors.white,
   },
   outline: {
     borderWidth: 1,

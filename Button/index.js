@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, ActivityIndicator} from 'react-native';
-import {BaseColor, useTheme} from '@config';
+import {BaseColor, useTheme} from '@configs';
 import PropTypes from 'prop-types';
 import {Text} from '@components';
 import styles from './styles';

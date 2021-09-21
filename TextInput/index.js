@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextInput, View, I18nManager} from 'react-native';
 import PropTypes from 'prop-types';
-import {useTheme, useFont, Colors} from '@config';
+import {useTheme, useFont, Colors} from '@configs';
 
 export default function Index(props) {
   const {colors} = useTheme();
@@ -21,7 +21,7 @@ export default function Index(props) {
           paddingTop: 5,
           paddingBottom: 5,
         }}
-        placeholderTextColor={success ? Colors.white : colors.primary}
+        // placeholderTextColor={success ? Colors.white : colors.primary}
         selectionColor={colors.primary}
       />
       {icon}

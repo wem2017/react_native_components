@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import {useTheme, useFont} from '@config';
+import {useTheme, useFont} from '@configs';
 
 const Roboto = {
   100: 'Thin',
