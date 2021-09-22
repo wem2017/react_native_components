@@ -1,20 +1,134 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import {useTheme, useFont} from '@configs';
+import {useTheme, useFont, Colors} from '@configs';
 
-const Roboto = {
-  100: 'Thin',
-  200: 'Thin',
-  300: 'Light',
-  400: 'Regular',
-  500: 'Medium',
-  600: 'Medium',
-  700: 'Bold',
-  800: 'Bold',
-  900: 'Black',
-  normal: 'Regular',
-  bold: 'Bold',
+export default function Index(props) {
+  const {colors} = useTheme();
+  const font = useFont();
+  const {
+    h1,
+    h2,
+    h3,
+    h4,
+    title,
+    subtitle,
+    caption,
+    overline,
+    thin,
+    ultraLight,
+    light,
+    regular,
+    medium,
+    semibold,
+    bold,
+    heavy,
+    black,
+    primaryColor,
+    primaryLightColor,
+    primaryDarkColor,
+    secondaryColor,
+    secondaryLightColor,
+    secondaryDarkColor,
+    white,
+    secondary,
+    children,
+    style,
+  } = props;
+
+  let textStyle = StyleSheet.flatten([
+    {fontFamily: font, color: colors.text},
+    h1 && Typography.h1,
+    h2 && Typography.h2,
+    h3 && Typography.h3,
+    h4 && Typography.h4,
+    title && Typography.title,
+    subtitle && Typography.subtitle,
+    caption && Typography.caption,
+    overline && Typography.overline,
+    thin && {fontWeight: FontWeight.thin},
+    ultraLight && {fontWeight: FontWeight.ultraLight},
+    light && {fontWeight: FontWeight.light},
+    regular && {fontWeight: FontWeight.regular},
+    medium && {fontWeight: FontWeight.medium},
+    semibold && {fontWeight: FontWeight.semibold},
+    bold && {fontWeight: FontWeight.bold},
+    heavy && {fontWeight: FontWeight.heavy},
+    black && {fontWeight: FontWeight.black},
+    primaryColor && {color: colors.primary},
+    primaryLightColor && {color: colors.primaryLight},
+    primaryDarkColor && {color: colors.primaryDark},
+    secondaryColor && {color: colors.secondary},
+    secondaryLightColor && {color: colors.secondaryLight},
+    secondaryDarkColor && {color: colors.secondaryDark},
+    white && {color: Colors.white},
+    secondary && {color: colors.textSecondary},
+    style,
+  ]);
+
+  if (textStyle.fontFamily) {
+    const fontWeight = textStyle.fontWeight ?? 'normal';
+    switch (textStyle.fontFamily) {
+      case 'Raleway':
+        textStyle.fontFamily = `${textStyle.fontFamily}-${Raleway[fontWeight]}`;
+        break;
+      case 'SFProText':
+        textStyle.fontFamily = `${textStyle.fontFamily}-${SFProText[fontWeight]}`;
+        break;
+      default:
+        break;
+    }
+  }
+
+  return (
+    <Text {...props} style={textStyle}>
+      {children ?? ''}
+    </Text>
+  );
+}
+
+// Define typechecking
+Index.propTypes = {
+  h1: PropTypes.bool,
+  h2: PropTypes.bool,
+  h3: PropTypes.bool,
+  h4: PropTypes.bool,
+  title: PropTypes.bool,
+  subtitle: PropTypes.bool,
+  caption: PropTypes.bool,
+  overline: PropTypes.bool,
+  thin: PropTypes.bool,
+  ultraLight: PropTypes.bool,
+  light: PropTypes.bool,
+  regular: PropTypes.bool,
+  medium: PropTypes.bool,
+  semibold: PropTypes.bool,
+  bold: PropTypes.bool,
+  heavy: PropTypes.bool,
+  black: PropTypes.bool,
+  primaryColor: PropTypes.bool,
+  primaryLightColor: PropTypes.bool,
+  primaryDarkColor: PropTypes.bool,
+  secondaryColor: PropTypes.bool,
+  secondaryLightColor: PropTypes.bool,
+  secondaryDarkColor: PropTypes.bool,
+  white: PropTypes.bool,
+  secondary: PropTypes.bool,
+  children: PropTypes.node,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};
+
+Index.defaultProps = {
+  primaryColor: false,
+  primaryLightColor: false,
+  primaryDarkColor: false,
+  secondaryColor: false,
+  secondaryLightColor: false,
+  secondaryDarkColor: false,
+  white: false,
+  secondary: false,
+  children: '',
+  style: {},
 };
 
 const Raleway = {
@@ -30,225 +144,63 @@ const Raleway = {
   normal: 'Regular',
   bold: 'Bold',
 };
-
-const Merriweather = {
-  100: 'Light',
-  200: 'Light',
+const SFProText = {
+  100: 'Thin',
+  200: 'Ultralight',
   300: 'Light',
   400: 'Regular',
-  500: 'Regular',
-  600: 'Bold',
+  500: 'Medium',
+  600: 'Semibold',
   700: 'Bold',
-  800: 'Bold',
+  800: 'Heavy',
   900: 'Black',
   normal: 'Regular',
   bold: 'Bold',
 };
 
-export default function Index(props) {
-  const {
-    //props style
-    header,
-    title1,
-    title2,
-    title3,
-    headline,
-    body1,
-    body2,
-    callout,
-    subhead,
-    footnote,
-    caption1,
-    caption2,
-    overline,
-    // props font
-    thin,
-    ultraLight,
-    light,
-    regular,
-    medium,
-    semibold,
-    bold,
-    heavy,
-    black,
-    //custom color
-    primaryColor,
-    darkPrimaryColor,
-    lightPrimaryColor,
-    accentColor,
-    grayColor,
-    dividerColor,
-    whiteColor,
-    fieldColor,
-    //numberOfLines
-    numberOfLines,
-    textAlign,
-    //custom
-    style,
-    //children
-    children,
-  } = props;
-
-  const {colors} = useTheme();
-  const font = useFont();
-
-  let textStyle = StyleSheet.flatten([
-    {fontFamily: font, textAlign},
-    // header && Typography.header,
-    // title1 && Typography.title1,
-    // title2 && Typography.title2,
-    // title3 && Typography.title3,
-    // headline && Typography.headline,
-    // body1 && Typography.body1,
-    // body2 && Typography.body2,
-    // callout && Typography.callout,
-    // subhead && Typography.subhead,
-    // footnote && Typography.footnote,
-    // caption1 && Typography.caption1,
-    // caption2 && Typography.caption2,
-    // overline && Typography.overline,
-    // //custom for font
-    // thin && {fontWeight: FontWeight.thin},
-    // ultraLight && {fontWeight: FontWeight.ultraLight},
-    // light && {fontWeight: FontWeight.light},
-    // regular && {fontWeight: FontWeight.regular},
-    // medium && {fontWeight: FontWeight.medium},
-    // semibold && {fontWeight: FontWeight.semibold},
-    // bold && {fontWeight: FontWeight.bold},
-    // heavy && {fontWeight: FontWeight.heavy},
-    // black && {fontWeight: FontWeight.black},
-    // // default color
-    {color: colors.text},
-    //custom for color
-    primaryColor && {color: colors.primary},
-    darkPrimaryColor && {color: colors.primaryDark},
-    lightPrimaryColor && {color: colors.primaryLight},
-    accentColor && {color: colors.accent},
-    // grayColor && {color: Colors.grayColor},
-    // dividerColor && {color: BaseColor.dividerColor},
-    // whiteColor && {color: BaseColor.whiteColor},
-    // fieldColor && {color: BaseColor.fieldColor},
-    style && style,
-  ]);
-
-  if (textStyle.fontFamily) {
-    const fontStyle = textStyle.fontStyle == 'italic' ? 'Italic' : '';
-    const fontWeight = textStyle.fontWeight ?? 400;
-    switch (textStyle.fontFamily) {
-      case 'Raleway':
-        textStyle.fontFamily = `${textStyle.fontFamily}-${
-          Raleway[fontWeight] == 'Regular'
-            ? Raleway[fontWeight]
-            : Raleway[fontWeight] + fontStyle
-        }`;
-        break;
-      case 'Roboto':
-        textStyle.fontFamily = `${textStyle.fontFamily}-${
-          Roboto[fontWeight] == 'Regular'
-            ? Roboto[fontWeight]
-            : Roboto[fontWeight] + fontStyle
-        }`;
-        break;
-      case 'Merriweather':
-        textStyle.fontFamily = `${textStyle.fontFamily}-${
-          Merriweather[fontWeight] == 'Regular'
-            ? Merriweather[fontWeight]
-            : Merriweather[fontWeight] + fontStyle
-        }`;
-        break;
-      default:
-        break;
-    }
-  }
-
-  return (
-    <Text style={textStyle} numberOfLines={numberOfLines}>
-      {children ?? ''}
-    </Text>
-  );
-}
-
-// Define typechecking
-Index.propTypes = {
-  //define style
-  header: PropTypes.bool,
-  title1: PropTypes.bool,
-  title2: PropTypes.bool,
-  title3: PropTypes.bool,
-  headline: PropTypes.bool,
-  body1: PropTypes.bool,
-  body2: PropTypes.bool,
-  callout: PropTypes.bool,
-  subhead: PropTypes.bool,
-  footnote: PropTypes.bool,
-  caption1: PropTypes.bool,
-  caption2: PropTypes.bool,
-  overline: PropTypes.bool,
-  //define font custom
-  thin: PropTypes.bool,
-  ultraLight: PropTypes.bool,
-  light: PropTypes.bool,
-  regular: PropTypes.bool,
-  medium: PropTypes.bool,
-  semibold: PropTypes.bool,
-  bold: PropTypes.bool,
-  heavy: PropTypes.bool,
-  black: PropTypes.bool,
-  //custon for text color
-  primaryColor: PropTypes.bool,
-  darkPrimaryColor: PropTypes.bool,
-  lightPrimaryColor: PropTypes.bool,
-  accentColor: PropTypes.bool,
-  grayColor: PropTypes.bool,
-  dividerColor: PropTypes.bool,
-  whiteColor: PropTypes.bool,
-  fieldColor: PropTypes.bool,
-  //numberOfLines
-  numberOfLines: PropTypes.number,
-  textAlign: PropTypes.string,
-  //custom style
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  children: PropTypes.node, // plain text
+const FontWeight = {
+  thin: '100',
+  ultraLight: '200',
+  light: '300',
+  regular: '400',
+  medium: '500',
+  semibold: '600',
+  bold: '700',
+  heavy: '800',
+  black: '900',
 };
 
-Index.defaultProps = {
-  //props for style
-  header: false,
-  title1: false,
-  title2: false,
-  title3: false,
-  headline: false,
-  body1: false,
-  body2: false,
-  callout: false,
-  subhead: false,
-  footnote: false,
-  caption1: false,
-  caption2: false,
-  overline: false,
-  //props for font
-  thin: false,
-  ultraLight: false,
-  light: false,
-  regular: false,
-  medium: false,
-  semibold: false,
-  bold: false,
-  heavy: false,
-  black: false,
-  //custon for text color
-  primaryColor: false,
-  darkPrimaryColor: false,
-  lightPrimaryColor: false,
-  accentColor: false,
-  grayColor: false,
-  dividerColor: false,
-  whiteColor: false,
-  fieldColor: false,
-  //numberOfLines
-  numberOfLines: 10,
-  textAlign: 'left',
-  //custom style
-  style: {},
-  children: '',
-};
+const Typography = StyleSheet.create({
+  h1: {
+    fontSize: 32,
+    lineHeight: 38,
+  },
+  h2: {
+    fontSize: 24,
+    lineHeight: 32,
+  },
+  h3: {
+    fontSize: 20,
+    lineHeight: 28,
+  },
+  h4: {
+    fontSize: 16,
+    lineHeight: 22,
+  },
+  title: {
+    fontSize: 14,
+    lineHeight: 18,
+  },
+  subtitle: {
+    fontSize: 12,
+    lineHeight: 16,
+  },
+  caption: {
+    fontSize: 10,
+    lineHeight: 14,
+  },
+  overline: {
+    fontSize: 8,
+    lineHeight: 12,
+  },
+});
