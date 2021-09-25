@@ -6,63 +6,90 @@ import {useTheme, useFont, Colors} from '@configs';
 export default function Index(props) {
   const {colors} = useTheme();
   const font = useFont();
-  const {
-    h1,
-    h2,
-    h3,
-    h4,
-    title,
-    subtitle,
-    caption,
-    overline,
-    thin,
-    ultraLight,
-    light,
-    regular,
-    medium,
-    semibold,
-    bold,
-    heavy,
-    black,
-    primaryColor,
-    primaryLightColor,
-    primaryDarkColor,
-    secondaryColor,
-    secondaryLightColor,
-    secondaryDarkColor,
-    white,
-    secondary,
-    children,
-    style,
-  } = props;
+  const {typography, weight, type, color, children, style} = props;
+
+  const getTypography = value => {
+    switch (value) {
+      case 'h1':
+        return Typography.h1;
+      case 'h2':
+        return Typography.h2;
+      case 'h3':
+        return Typography.h3;
+      case 'h4':
+        return Typography.h4;
+      case 'title':
+        return Typography.title;
+      case 'subtitle':
+        return Typography.subtitle;
+      case 'caption':
+        return Typography.caption;
+      case 'overline':
+        return Typography.overline;
+      default:
+        return Typography.title;
+    }
+  };
+
+  const getFontWeight = value => {
+    switch (value) {
+      case 'thin':
+        return {fontWeight: FontWeight.thin};
+      case 'ultraLight':
+        return {fontWeight: FontWeight.ultraLight};
+      case 'light':
+        return {fontWeight: FontWeight.light};
+      case 'regular':
+        return {fontWeight: FontWeight.regular};
+      case 'medium':
+        return {fontWeight: FontWeight.medium};
+      case 'semibold':
+        return {fontWeight: FontWeight.semibold};
+      case 'bold':
+        return {fontWeight: FontWeight.bold};
+      case 'heavy':
+        return {fontWeight: FontWeight.heavy};
+      case 'black':
+        return {fontWeight: FontWeight.black};
+      default:
+        return {fontWeight: FontWeight.regular};
+    }
+  };
+
+  const getType = value => {
+    switch (value) {
+      case 'primary':
+        return {color: colors.text};
+      case 'secondary':
+        return {color: colors.textSecondary};
+      default:
+        return {color: colors.text};
+    }
+  };
+
+  const getColor = value => {
+    switch (value) {
+      case 'primary':
+        return {color: colors.primary};
+      case 'secondary':
+        return {color: colors.secondary};
+      case 'white':
+        return {color: Colors.white};
+      case 'error':
+        return {color: colors.error};
+      case 'notification':
+        return {color: colors.notification};
+      default:
+        return {};
+    }
+  };
 
   let textStyle = StyleSheet.flatten([
-    {fontFamily: font, color: colors.text},
-    h1 && Typography.h1,
-    h2 && Typography.h2,
-    h3 && Typography.h3,
-    h4 && Typography.h4,
-    title && Typography.title,
-    subtitle && Typography.subtitle,
-    caption && Typography.caption,
-    overline && Typography.overline,
-    thin && {fontWeight: FontWeight.thin},
-    ultraLight && {fontWeight: FontWeight.ultraLight},
-    light && {fontWeight: FontWeight.light},
-    regular && {fontWeight: FontWeight.regular},
-    medium && {fontWeight: FontWeight.medium},
-    semibold && {fontWeight: FontWeight.semibold},
-    bold && {fontWeight: FontWeight.bold},
-    heavy && {fontWeight: FontWeight.heavy},
-    black && {fontWeight: FontWeight.black},
-    primaryColor && {color: colors.primary},
-    primaryLightColor && {color: colors.primaryLight},
-    primaryDarkColor && {color: colors.primaryDark},
-    secondaryColor && {color: colors.secondary},
-    secondaryLightColor && {color: colors.secondaryLight},
-    secondaryDarkColor && {color: colors.secondaryDark},
-    white && {color: Colors.white},
-    secondary && {color: colors.textSecondary},
+    {fontFamily: font},
+    getType(type),
+    getTypography(typography),
+    getFontWeight(weight),
+    getColor(color),
     style,
   ]);
 
@@ -89,44 +116,45 @@ export default function Index(props) {
 
 // Define typechecking
 Index.propTypes = {
-  h1: PropTypes.bool,
-  h2: PropTypes.bool,
-  h3: PropTypes.bool,
-  h4: PropTypes.bool,
-  title: PropTypes.bool,
-  subtitle: PropTypes.bool,
-  caption: PropTypes.bool,
-  overline: PropTypes.bool,
-  thin: PropTypes.bool,
-  ultraLight: PropTypes.bool,
-  light: PropTypes.bool,
-  regular: PropTypes.bool,
-  medium: PropTypes.bool,
-  semibold: PropTypes.bool,
-  bold: PropTypes.bool,
-  heavy: PropTypes.bool,
-  black: PropTypes.bool,
-  primaryColor: PropTypes.bool,
-  primaryLightColor: PropTypes.bool,
-  primaryDarkColor: PropTypes.bool,
-  secondaryColor: PropTypes.bool,
-  secondaryLightColor: PropTypes.bool,
-  secondaryDarkColor: PropTypes.bool,
-  white: PropTypes.bool,
-  secondary: PropTypes.bool,
+  typography: PropTypes.oneOf([
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'title',
+    'subtitle',
+    'caption',
+    'overline',
+  ]),
+  weight: PropTypes.oneOf([
+    'thin',
+    'ultraLight',
+    'light',
+    'regular',
+    'medium',
+    'semibold',
+    'bold',
+    'heavy',
+    'black',
+  ]),
+  type: PropTypes.oneOf(['primary', 'secondary']),
+  color: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'white',
+    'error',
+    'notification',
+    'none',
+  ]),
   children: PropTypes.node,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 Index.defaultProps = {
-  primaryColor: false,
-  primaryLightColor: false,
-  primaryDarkColor: false,
-  secondaryColor: false,
-  secondaryLightColor: false,
-  secondaryDarkColor: false,
-  white: false,
-  secondary: false,
+  typography: 'title',
+  weight: 'regular',
+  type: 'primary',
+  color: 'none',
   children: '',
   style: {},
 };
@@ -144,6 +172,7 @@ const Raleway = {
   normal: 'Regular',
   bold: 'Bold',
 };
+
 const SFProText = {
   100: 'Thin',
   200: 'Ultralight',

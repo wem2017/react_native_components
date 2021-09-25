@@ -1,28 +1,42 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '@configs';
 
 export default StyleSheet.create({
-  default: {
-    height: 56,
+  large: {
+    height: 48,
     borderRadius: 8,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
+    minWidth: 128,
   },
-  textDefault: {
-    // color: Colors.white,
+  medium: {
+    height: 36,
+    borderRadius: 8,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    minWidth: 80,
   },
-  outline: {
-    borderWidth: 1,
+  small: {
+    height: 28,
+    borderRadius: 6,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    minWidth: 60,
   },
-
-  full: {
-    width: '100%',
-    alignSelf: 'auto',
+  leading: {
+    marginRight: 8,
   },
-  round: {
-    borderRadius: 28,
+  trailing: {
+    marginLeft: 8,
   },
-  indicator: {paddingLeft: 5},
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
