@@ -80,6 +80,14 @@ export default function Index(props) {
   };
 
   /**
+   * on forcus
+   */
+  const onFocus = () => {
+    setFocus(true);
+    props.onFocus?.();
+  };
+
+  /**
    * render info icon button
    */
   const renderInfo = () => {
@@ -122,9 +130,7 @@ export default function Index(props) {
             {...props}
             ref={ref}
             style={[styles.inputContent, getTextStyle()]}
-            onFocus={() => {
-              setFocus(true);
-            }}
+            onFocus={onFocus}
             onBlur={onBlur}
           />
           {renderClear()}
