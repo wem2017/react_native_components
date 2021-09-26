@@ -30,9 +30,19 @@ export default StyleSheet.create({
   },
   leading: {
     marginRight: 8,
+    width: 24,
+    height: 24,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   trailing: {
     marginLeft: 8,
+    width: 24,
+    height: 24,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   center: {
     flex: 1,

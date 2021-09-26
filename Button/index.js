@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import {useTheme, Colors} from '@configs';
 import PropTypes from 'prop-types';
-import {Text, SizedBox} from '@components';
+import {Text} from '@components';
 import styles from './styles';
 
 export default function Button(props) {
@@ -206,10 +206,8 @@ export default function Button(props) {
     if (leading) {
       const iconSize = getIconSize();
       return (
-        <View style={styles.leading}>
-          <SizedBox width={iconSize} height={iconSize}>
-            <View style={styles.center}>{leading}</View>
-          </SizedBox>
+        <View style={[styles.leading, {width: iconSize, height: iconSize}]}>
+          {leading}
         </View>
       );
     }
@@ -231,10 +229,8 @@ export default function Button(props) {
     if (trailing) {
       const iconSize = getIconSize();
       return (
-        <View style={styles.trailing}>
-          <SizedBox width={iconSize} height={iconSize}>
-            <View style={styles.center}>{trailing}</View>
-          </SizedBox>
+        <View style={[styles.trailing, {width: iconSize, height: iconSize}]}>
+          {trailing}
         </View>
       );
     }

@@ -202,34 +202,26 @@ const FontWeight = {
 const Typography = StyleSheet.create({
   h1: {
     fontSize: 32,
-    lineHeight: 38,
   },
   h2: {
     fontSize: 24,
-    lineHeight: 32,
   },
   h3: {
     fontSize: 20,
-    lineHeight: 28,
   },
   h4: {
     fontSize: 16,
-    lineHeight: 22,
   },
   title: {
     fontSize: 14,
-    lineHeight: 18,
   },
   subtitle: {
     fontSize: 12,
-    lineHeight: 16,
   },
   caption: {
     fontSize: 10,
-    lineHeight: 14,
   },
   overline: {
     fontSize: 8,
-    lineHeight: 12,
   },
 });
