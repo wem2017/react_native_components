@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {TextInput, View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import {Text, Icon} from '@components';
+import {Text, Icon, getFontFamily} from '@components';
 import {useTheme, useFont} from '@configs';
 import styles from './styles';
 export default function Index(props) {
@@ -52,15 +52,26 @@ export default function Index(props) {
    * get text style
    */
   const getTextStyle = () => {
+    let style = styles.textLarge;
     switch (size) {
       case 'large':
-        return styles.textLarge;
+        style = styles.textLarge;
+        break;
       case 'small':
-        return styles.textSmall;
-
+        style = styles.textSmall;
+        break;
       default:
-        return styles.textLarge;
+        style = styles.textLarge;
+        break;
     }
+    style = {
+      ...style,
+      fontFamily: getFontFamily({
+        fontFamily: font,
+        fontWeight: styles.fontWeight,
+      }),
+    };
+    return style;
   };
 
   /**
@@ -129,7 +140,7 @@ export default function Index(props) {
           <TextInput
             {...props}
             ref={ref}
-            style={[styles.inputContent, getTextStyle()]}
+            style={[styles.inputContent, {color: colors.text}, getTextStyle()]}
             onFocus={onFocus}
             onBlur={onBlur}
           />

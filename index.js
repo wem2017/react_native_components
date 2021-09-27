@@ -1,4 +1,4 @@
-import Text from './Text';
+import Text, {getFontFamily} from './Text';
 import Button from './Button';
 import TextInput from './TextInput';
 import Icon from './Icon';
@@ -12,6 +12,7 @@ export {
   TextInput,
   Image,
   Text,
+  getFontFamily,
   Divider,
   IconButton,
   Button,

@@ -3,6 +3,59 @@ import {Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useTheme, useFont, Colors} from '@configs';
 
+const Raleway = {
+  100: 'Thin',
+  200: 'ExtraLight',
+  300: 'Light',
+  400: 'Regular',
+  500: 'Medium',
+  600: 'SemiBold',
+  700: 'Bold',
+  800: 'ExtraBold',
+  900: 'Black',
+  normal: 'Regular',
+  bold: 'Bold',
+};
+
+const SFProText = {
+  100: 'Thin',
+  200: 'Ultralight',
+  300: 'Light',
+  400: 'Regular',
+  500: 'Medium',
+  600: 'Semibold',
+  700: 'Bold',
+  800: 'Heavy',
+  900: 'Black',
+  normal: 'Regular',
+  bold: 'Bold',
+};
+
+const FontWeight = {
+  thin: '100',
+  ultraLight: '200',
+  light: '300',
+  regular: '400',
+  medium: '500',
+  semibold: '600',
+  bold: '700',
+  heavy: '800',
+  black: '900',
+};
+
+export const getFontFamily = ({
+  fontFamily = 'SFProText',
+  fontWeight = 'normal',
+}) => {
+  switch (fontFamily) {
+    case 'Raleway':
+      return `${fontFamily}-${Raleway[fontWeight]}`;
+    case 'SFProText':
+      return `${fontFamily}-${SFProText[fontWeight]}`;
+    default:
+      return `${fontFamily}-${SFProText[fontWeight]}`;
+  }
+};
 export default function Index(props) {
   const {colors} = useTheme();
   const font = useFont();
@@ -94,17 +147,10 @@ export default function Index(props) {
   ]);
 
   if (textStyle.fontFamily) {
-    const fontWeight = textStyle.fontWeight ?? 'normal';
-    switch (textStyle.fontFamily) {
-      case 'Raleway':
-        textStyle.fontFamily = `${textStyle.fontFamily}-${Raleway[fontWeight]}`;
-        break;
-      case 'SFProText':
-        textStyle.fontFamily = `${textStyle.fontFamily}-${SFProText[fontWeight]}`;
-        break;
-      default:
-        break;
-    }
+    textStyle.fontFamily = getFontFamily({
+      fontFamily: textStyle.fontFamily,
+      fontWeight: textStyle.fontWeight,
+    });
   }
 
   return (
@@ -157,46 +203,6 @@ Index.defaultProps = {
   color: 'none',
   children: '',
   style: {},
-};
-
-const Raleway = {
-  100: 'Thin',
-  200: 'ExtraLight',
-  300: 'Light',
-  400: 'Regular',
-  500: 'Medium',
-  600: 'SemiBold',
-  700: 'Bold',
-  800: 'ExtraBold',
-  900: 'Black',
-  normal: 'Regular',
-  bold: 'Bold',
-};
-
-const SFProText = {
-  100: 'Thin',
-  200: 'Ultralight',
-  300: 'Light',
-  400: 'Regular',
-  500: 'Medium',
-  600: 'Semibold',
-  700: 'Bold',
-  800: 'Heavy',
-  900: 'Black',
-  normal: 'Regular',
-  bold: 'Bold',
-};
-
-const FontWeight = {
-  thin: '100',
-  ultraLight: '200',
-  light: '300',
-  regular: '400',
-  medium: '500',
-  semibold: '600',
-  bold: '700',
-  heavy: '800',
-  black: '900',
 };
 
 const Typography = StyleSheet.create({
