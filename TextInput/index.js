@@ -1,10 +1,11 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, forwardRef, useImperativeHandle} from 'react';
 import {TextInput, View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Text, Icon, getFontFamily} from '@components';
 import {useTheme, useFont} from '@configs';
 import styles from './styles';
-export default function Index(props) {
+
+const Index = forwardRef((props, ref) => {
   const {colors} = useTheme();
   const font = useFont();
   const {
@@ -20,9 +21,14 @@ export default function Index(props) {
     trailing,
   } = props;
 
-  const ref = useRef();
+  const inputRef = useRef();
   const [focus, setFocus] = useState(false);
 
+  useImperativeHandle(ref, () => inputRef.current);
+
+  /**
+   * get border color
+   */
   const getBorderColor = () => {
     if (error) {
       return colors.error;
@@ -52,33 +58,33 @@ export default function Index(props) {
    * get text style
    */
   const getTextStyle = () => {
-    let style = styles.textLarge;
+    let textStyle = styles.textLarge;
     switch (size) {
       case 'large':
-        style = styles.textLarge;
+        textStyle = styles.textLarge;
         break;
       case 'small':
-        style = styles.textSmall;
+        textStyle = styles.textSmall;
         break;
       default:
-        style = styles.textLarge;
+        textStyle = styles.textLarge;
         break;
     }
-    style = {
-      ...style,
+
+    return {
+      ...textStyle,
       fontFamily: getFontFamily({
         fontFamily: font,
-        fontWeight: styles.fontWeight,
+        fontWeight: textStyle.fontWeight,
       }),
     };
-    return style;
   };
 
   /**
    * on clear text
    */
   const onClear = () => {
-    ref.current?.clear?.();
+    inputRef?.current?.clear?.();
     onChangeText?.('');
   };
 
@@ -139,7 +145,7 @@ export default function Index(props) {
         <View style={styles.rowContent}>
           <TextInput
             {...props}
-            ref={ref}
+            ref={inputRef}
             style={[styles.inputContent, {color: colors.text}, getTextStyle()]}
             onFocus={onFocus}
             onBlur={onBlur}
@@ -159,7 +165,9 @@ export default function Index(props) {
       </Text>
     </View>
   );
-}
+});
+
+export default Index;
 
 Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),

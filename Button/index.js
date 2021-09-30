@@ -5,7 +5,7 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-import {useTheme, Colors} from '@configs';
+import {Styles, useTheme, Colors} from '@configs';
 import PropTypes from 'prop-types';
 import {Text} from '@components';
 import styles from './styles';
@@ -18,6 +18,7 @@ export default function Button(props) {
     type,
     size,
     full,
+    disabled,
     leading,
     trailing,
     loading,
@@ -45,6 +46,11 @@ export default function Button(props) {
    * export type style
    */
   const getTypeStyle = () => {
+    if (disabled) {
+      return {
+        backgroundColor: colors.border,
+      };
+    }
     switch (type) {
       case 'primary':
         return {backgroundColor: colors.primary};
@@ -60,10 +66,6 @@ export default function Button(props) {
           borderWidth: 1,
           borderColor: colors.primary,
         };
-      case 'disable':
-        return {
-          backgroundColor: colors.border,
-        };
       case 'text':
         return {};
 
@@ -76,6 +78,9 @@ export default function Button(props) {
    * export loading color
    */
   const getLoadingColor = () => {
+    if (disabled) {
+      return colors.textSecondary;
+    }
     switch (type) {
       case 'primary':
         return Colors.white;
@@ -83,8 +88,6 @@ export default function Button(props) {
         return colors.text;
       case 'outline':
         return colors.primary;
-      case 'disable':
-        return colors.textSecondary;
       case 'text':
         return colors.primary;
       default:
@@ -130,6 +133,18 @@ export default function Button(props) {
    */
   const renderText = () => {
     const typography = getTypography();
+    if (disabled) {
+      return (
+        <Text
+          typography={typography}
+          weight="bold"
+          type="secondary"
+          numberOfLines={1}
+          style={textStyle}>
+          {children}
+        </Text>
+      );
+    }
     switch (type) {
       case 'primary':
         return (
@@ -158,17 +173,6 @@ export default function Button(props) {
             typography={typography}
             weight="bold"
             color="primary"
-            numberOfLines={1}
-            style={textStyle}>
-            {children}
-          </Text>
-        );
-      case 'disable':
-        return (
-          <Text
-            typography={typography}
-            weight="bold"
-            type="secondary"
             numberOfLines={1}
             style={textStyle}>
             {children}
@@ -220,7 +224,7 @@ export default function Button(props) {
     if (loading) {
       return (
         <View style={styles.trailing}>
-          <View style={styles.center}>
+          <View style={Styles.flexCenter}>
             <ActivityIndicator color={getLoadingColor()} />
           </View>
         </View>
@@ -244,10 +248,7 @@ export default function Button(props) {
   ]);
 
   return (
-    <TouchableOpacity
-      {...props}
-      style={buttonStyle}
-      disabled={type === 'disable'}>
+    <TouchableOpacity {...props} style={buttonStyle}>
       {renderLeading()}
       {renderText()}
       {renderTrailing()}
@@ -258,9 +259,10 @@ export default function Button(props) {
 Button.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  type: PropTypes.oneOf(['primary', 'secondary', 'outline', 'text', 'disable']),
+  type: PropTypes.oneOf(['primary', 'secondary', 'outline', 'text']),
   size: PropTypes.oneOf(['large', 'medium', 'small']),
   full: PropTypes.bool,
+  disabled: PropTypes.bool,
   leading: PropTypes.node,
   trailing: PropTypes.node,
   loading: PropTypes.bool,
@@ -273,6 +275,7 @@ Button.defaultProps = {
   type: 'primary',
   size: 'large',
   full: true,
+  disabled: false,
   leading: null,
   trailing: null,
   loading: false,

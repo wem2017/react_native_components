@@ -8,18 +8,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   small: {
     height: 36,
     width: 36,
     borderRadius: 18,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-
-  center: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
