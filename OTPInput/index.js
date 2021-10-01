@@ -15,7 +15,7 @@ const OTPInput = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => otpRef.current);
 
   return (
-    <View style={style}>
+    <View style={[styles.container, style]}>
       <OtpInputs
         ref={otpRef}
         {...props}

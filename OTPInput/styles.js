@@ -1,7 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    alignItems: 'center',
+  },
   otpRow: {
     flexDirection: 'row',
     alignItems: 'center',
