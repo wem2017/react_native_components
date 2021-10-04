@@ -5,7 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
 import {Styles} from '@configs';
 
-export default function Index(props) {
+export default function Container(props) {
   const headerHeight = useHeaderHeight();
   const {style, children} = props;
   return (
@@ -23,12 +23,12 @@ export default function Index(props) {
   );
 }
 
-Index.propTypes = {
+Container.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   children: PropTypes.node,
 };
 
-Index.defaultProps = {
+Container.defaultProps = {
   styles: {},
   children: null,
 };

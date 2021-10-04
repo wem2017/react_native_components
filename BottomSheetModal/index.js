@@ -22,7 +22,7 @@ const Index = forwardRef((props, ref) => {
     handleContentLayout,
   } = useBottomSheetDynamicSnapPoints(initialSnapPoints);
 
-  const {children} = props;
+  const {children, onDismiss, enablePanDownToClose, style} = props;
 
   return (
     <BottomSheetModal
@@ -31,22 +31,23 @@ const Index = forwardRef((props, ref) => {
       handleHeight={animatedHandleHeight}
       contentHeight={animatedContentHeight}
       stackBehavior="push"
+      onDismiss={onDismiss}
       handleComponent={() => (
         <View style={styles.indicatorContainer}>
           <View style={[styles.indicator, {backgroundColor: colors.card}]} />
         </View>
       )}
-      backdropComponent={prop => (
+      backdropComponent={backdropProps => (
         <BottomSheetBackdrop
           disappearsOnIndex={-1}
           appearsOnIndex={0}
-          {...prop}
+          {...backdropProps}
         />
       )}
-      enablePanDownToClose={true}>
+      enablePanDownToClose={enablePanDownToClose}>
       <BottomSheetView
         onLayout={handleContentLayout}
-        style={[styles.container, {backgroundColor: colors.card}]}>
+        style={[styles.container, {backgroundColor: colors.card}, style]}>
         {children}
       </BottomSheetView>
     </BottomSheetModal>
@@ -57,10 +58,14 @@ export default Index;
 
 Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  enablePanDownToClose: PropTypes.bool,
+  onDismiss: PropTypes.func,
   children: PropTypes.node,
 };
 
 Index.defaultProps = {
   style: {},
+  enablePanDownToClose: true,
+  onDismiss: () => {},
   children: null,
 };

@@ -56,21 +56,6 @@ export default function IconButton(props) {
   };
 
   /**
-   * export icon size
-   */
-  const getIconSize = () => {
-    switch (size) {
-      case 'large':
-        return 24;
-      case 'small':
-        return 16;
-
-      default:
-        return 24;
-    }
-  };
-
-  /**
    * export icon color
    */
   const getIconColor = () => {
@@ -102,7 +87,7 @@ export default function IconButton(props) {
       disabled={type === 'disable'}>
       <Icon
         name={name ?? 'help-circle'}
-        size={getIconSize()}
+        size={24}
         color={getIconColor()}
         type={source}
         style={iconStyle}
