@@ -8,6 +8,7 @@ import SizedBox from './SizedBox';
 import Divider from './Divider';
 import IconButton from './IconButton';
 import OTPInput from './OTPInput';
+import BottomSheetModal from './BottomSheetModal';
 
 export {
   TextInput,
@@ -21,4 +22,5 @@ export {
   Icon,
   SafeAreaView,
   OTPInput,
+  BottomSheetModal,
 };
