@@ -1,6 +1,5 @@
 import React, {useRef, useMemo, forwardRef, useImperativeHandle} from 'react';
 import {View} from 'react-native';
-import {useTheme} from '@configs';
 import PropTypes from 'prop-types';
 import {
   BottomSheetModal,
@@ -8,6 +7,7 @@ import {
   useBottomSheetDynamicSnapPoints,
   BottomSheetBackdrop,
 } from '@gorhom/bottom-sheet';
+import {useTheme} from '@configs';
 import styles from './styles';
 
 const Index = forwardRef((props, ref) => {

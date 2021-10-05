@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import PropTypes from 'prop-types';
-
+import styles from './styles';
 export default function SizedBox(props) {
   const {width, height, children} = props;
   return <View style={[styles.default, {width, height}]}>{children}</View>;
@@ -18,9 +18,3 @@ SizedBox.defaultProps = {
   height: 0,
   children: null,
 };
-
-const styles = StyleSheet.create({
-  default: {
-    overflow: 'hidden',
-  },
-});

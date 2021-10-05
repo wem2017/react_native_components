@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import PropTypes from 'prop-types';
 import {useTheme} from '@configs';
-
+import styles from './styles';
 export default function Divider(props) {
   const {colors} = useTheme();
   const {color, thickness} = props;
@@ -28,9 +28,3 @@ Divider.defaultProps = {
   color: null,
   thickness: 1,
 };
-
-const styles = StyleSheet.create({
-  default: {
-    width: '100%',
-  },
-});

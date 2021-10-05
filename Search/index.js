@@ -1,8 +1,9 @@
 import React, {useImperativeHandle, useState, useRef, forwardRef} from 'react';
-import {View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {View, TextInput, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {useTheme, useFont, Styles} from '@configs';
 import {Icon, getFontFamily} from '@components';
+import styles from './styles';
 
 const Index = forwardRef((props, ref) => {
   const {colors} = useTheme();
@@ -127,20 +128,3 @@ Index.defaultProps = {
   value: '',
   placeholder: 'Search...',
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: 36,
-    borderRadius: 18,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-  },
-  searchIcon: {marginLeft: 8},
-  input: {
-    paddingHorizontal: 4,
-    flex: 1,
-    fontSize: 14,
-  },
-});

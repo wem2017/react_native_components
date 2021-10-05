@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {useTheme, useFont, Colors} from '@configs';
+import styles from './styles';
 
 const Raleway = {
   100: 'Thin',
@@ -64,23 +65,23 @@ export default function Index(props) {
   const getTypography = value => {
     switch (value) {
       case 'h1':
-        return Typography.h1;
+        return styles.h1;
       case 'h2':
-        return Typography.h2;
+        return styles.h2;
       case 'h3':
-        return Typography.h3;
+        return styles.h3;
       case 'h4':
-        return Typography.h4;
+        return styles.h4;
       case 'title':
-        return Typography.title;
+        return styles.title;
       case 'subtitle':
-        return Typography.subtitle;
+        return styles.subtitle;
       case 'caption':
-        return Typography.caption;
+        return styles.caption;
       case 'overline':
-        return Typography.overline;
+        return styles.overline;
       default:
-        return Typography.title;
+        return styles.title;
     }
   };
 
@@ -204,30 +205,3 @@ Index.defaultProps = {
   children: '',
   style: {},
 };
-
-const Typography = StyleSheet.create({
-  h1: {
-    fontSize: 32,
-  },
-  h2: {
-    fontSize: 24,
-  },
-  h3: {
-    fontSize: 20,
-  },
-  h4: {
-    fontSize: 16,
-  },
-  title: {
-    fontSize: 14,
-  },
-  subtitle: {
-    fontSize: 12,
-  },
-  caption: {
-    fontSize: 10,
-  },
-  overline: {
-    fontSize: 8,
-  },
-});
