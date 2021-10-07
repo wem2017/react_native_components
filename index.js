@@ -9,9 +9,11 @@ import SizedBox from './SizedBox';
 import Divider from './Divider';
 import IconButton from './IconButton';
 import OTPInput from './OTPInput';
-import BottomSheetModal from './BottomSheetModal';
+import BottomSheetView from './BottomSheetView';
+import BottomSheetScrollView from './BottomSheetScrollView';
+import BottomSheetFlatList from './BottomSheetFlatList';
 import BottomSheetPicker from './BottomSheetPicker';
-import Search from './Search';
+import SearchInput from './SearchInput';
 
 export {
   TextInput,
@@ -26,7 +28,9 @@ export {
   Container,
   SafeAreaView,
   OTPInput,
-  BottomSheetModal,
+  BottomSheetView,
+  BottomSheetScrollView,
+  BottomSheetFlatList,
   BottomSheetPicker,
-  Search,
+  SearchInput,
 };

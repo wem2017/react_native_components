@@ -1,6 +1,7 @@
 import React, {useImperativeHandle, useState, useRef, forwardRef} from 'react';
 import {View, TextInput, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
+import {BottomSheetTextInput} from '@gorhom/bottom-sheet';
 import {useTheme, useFont, Styles} from '@configs';
 import {Icon, getFontFamily} from '@components';
 import styles from './styles';
@@ -13,7 +14,7 @@ const Index = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => inputRef.current);
 
-  const {value, placeholder, style} = props;
+  const {type, value, placeholder, style} = props;
 
   /**
    * get border color
@@ -77,6 +78,52 @@ const Index = forwardRef((props, ref) => {
     }
   };
 
+  const renderInputType = () => {
+    switch (type) {
+      case 'bottomsheet':
+        return (
+          <BottomSheetTextInput
+            {...props}
+            ref={inputRef}
+            placeholder={placeholder}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            style={[
+              styles.input,
+              {
+                color: colors.text,
+                fontFamily: getFontFamily({
+                  fontFamily: font,
+                }),
+              },
+            ]}
+            placeholderTextColor={colors.textSecondary}
+          />
+        );
+
+      default:
+        return (
+          <TextInput
+            {...props}
+            ref={inputRef}
+            placeholder={placeholder}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            style={[
+              styles.input,
+              {
+                color: colors.text,
+                fontFamily: getFontFamily({
+                  fontFamily: font,
+                }),
+              },
+            ]}
+            placeholderTextColor={colors.textSecondary}
+          />
+        );
+    }
+  };
+
   return (
     <View
       style={[
@@ -93,23 +140,7 @@ const Index = forwardRef((props, ref) => {
         name="magnify"
         style={styles.searchIcon}
       />
-      <TextInput
-        {...props}
-        ref={inputRef}
-        placeholder={placeholder}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        style={[
-          styles.input,
-          {
-            color: colors.text,
-            fontFamily: getFontFamily({
-              fontFamily: font,
-            }),
-          },
-        ]}
-        placeholderTextColor={colors.textSecondary}
-      />
+      {renderInputType()}
       {renderClear()}
     </View>
   );
@@ -119,12 +150,14 @@ export default Index;
 
 Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  type: PropTypes.oneOf(['default', 'bottomsheet']),
   value: PropTypes.string,
   placeholder: PropTypes.string,
 };
 
 Index.defaultProps = {
   style: {},
+  type: 'default',
   value: '',
   placeholder: 'Search...',
 };

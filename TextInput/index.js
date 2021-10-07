@@ -171,7 +171,7 @@ export default Index;
 
 Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  type: PropTypes.oneOf(['default', 'monney']),
+  type: PropTypes.oneOf(['default', 'bottomsheet']),
   size: PropTypes.oneOf(['large', 'small']),
   label: PropTypes.string,
   value: PropTypes.string,
