@@ -14,6 +14,7 @@ import BottomSheetScrollView from './BottomSheetScrollView';
 import BottomSheetFlatList from './BottomSheetFlatList';
 import BottomSheetPicker from './BottomSheetPicker';
 import SearchInput from './SearchInput';
+import PopupAlert from './PopupAlert';
 
 export {
   TextInput,
@@ -33,4 +34,5 @@ export {
   BottomSheetFlatList,
   BottomSheetPicker,
   SearchInput,
+  PopupAlert,
 };

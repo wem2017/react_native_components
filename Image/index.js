@@ -8,7 +8,7 @@ export default function Image(props) {
   const {style, resizeMode} = props;
   const [loading, setLoading] = useState(false);
 
-  const renderLoading = () => {
+  const buildLoading = () => {
     if (loading) {
       return (
         <Placeholder Animation={Fade} style={[styles.loading, style]}>
@@ -27,7 +27,7 @@ export default function Image(props) {
         onLoad={() => setLoading(true)}
         onLoadEnd={() => setLoading(false)}
       />
-      {renderLoading()}
+      {buildLoading()}
     </View>
   );
 }

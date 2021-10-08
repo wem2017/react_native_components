@@ -39,4 +39,5 @@ export default StyleSheet.create({
     borderRadius: 8,
   },
   icon: {width: 24, height: 24, marginRight: 8},
+  empty: {width: 100, height: 100, marginBottom: 100},
 });

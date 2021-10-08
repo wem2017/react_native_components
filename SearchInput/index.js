@@ -61,9 +61,9 @@ const Index = forwardRef((props, ref) => {
   };
 
   /**
-   * render clear action
+   * build clear action
    */
-  const renderClear = () => {
+  const buildClear = () => {
     if (value) {
       return (
         <TouchableOpacity onPress={onClear}>
@@ -78,7 +78,11 @@ const Index = forwardRef((props, ref) => {
     }
   };
 
-  const renderInputType = () => {
+  /**
+   * build input type
+   * @return {*}
+   */
+  const buildInputType = () => {
     switch (type) {
       case 'bottomsheet':
         return (
@@ -140,8 +144,8 @@ const Index = forwardRef((props, ref) => {
         name="magnify"
         style={styles.searchIcon}
       />
-      {renderInputType()}
-      {renderClear()}
+      {buildInputType()}
+      {buildClear()}
     </View>
   );
 });

@@ -129,9 +129,9 @@ export default function Button(props) {
   };
 
   /**
-   * render Text
+   * build Text
    */
-  const renderText = () => {
+  const buildText = () => {
     const typography = getTypography();
     if (disabled) {
       return (
@@ -204,9 +204,9 @@ export default function Button(props) {
   };
 
   /**
-   * render leading
+   * build leading
    */
-  const renderLeading = () => {
+  const buildLeading = () => {
     if (leading) {
       const iconSize = getIconSize();
       return (
@@ -218,9 +218,9 @@ export default function Button(props) {
   };
 
   /**
-   * render trailing
+   * build trailing
    */
-  const renderTrailing = () => {
+  const buildTrailing = () => {
     if (loading) {
       return (
         <View style={styles.trailing}>
@@ -249,9 +249,9 @@ export default function Button(props) {
 
   return (
     <TouchableOpacity {...props} style={buttonStyle}>
-      {renderLeading()}
-      {renderText()}
-      {renderTrailing()}
+      {buildLeading()}
+      {buildText()}
+      {buildTrailing()}
     </TouchableOpacity>
   );
 }

@@ -105,9 +105,9 @@ const Index = forwardRef((props, ref) => {
   };
 
   /**
-   * render info icon button
+   * build info icon button
    */
-  const renderInfo = () => {
+  const buildInfo = () => {
     if (info) {
       return (
         <TouchableOpacity style={styles.rowInfo} onPress={onPressInfo}>
@@ -118,9 +118,9 @@ const Index = forwardRef((props, ref) => {
   };
 
   /**
-   * render clear action
+   * build clear action
    */
-  const renderClear = () => {
+  const buildClear = () => {
     if (value) {
       return (
         <TouchableOpacity onPress={onClear}>
@@ -131,9 +131,9 @@ const Index = forwardRef((props, ref) => {
   };
 
   /**
-   * render trailing
+   * build trailing
    */
-  const renderTrailing = () => {
+  const buildTrailing = () => {
     if (trailing) {
       return <View style={styles.trailingContent}>{trailing}</View>;
     }
@@ -150,13 +150,13 @@ const Index = forwardRef((props, ref) => {
             onFocus={onFocus}
             onBlur={onBlur}
           />
-          {renderClear()}
-          {renderTrailing()}
+          {buildClear()}
+          {buildTrailing()}
           <View style={[styles.infoContent, {backgroundColor: colors.card}]}>
             <Text typography="subtitle" type="secondary">
               {label}
             </Text>
-            {renderInfo()}
+            {buildInfo()}
           </View>
         </View>
       </View>

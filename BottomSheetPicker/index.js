@@ -55,11 +55,11 @@ const MemoList = memo(
     }));
 
     /**
-     * render item
+     * build item
      * @param {*} {item}
      * @return {*}
      */
-    const renderItem = ({item}) => {
+    const buildItem = ({item}) => {
       let style = {};
       let trailing;
       if (item.value === selected?.value) {
@@ -89,10 +89,16 @@ const MemoList = memo(
 
     return (
       <BottomSheetFlatList
-        contentContainerStyle={Styles.paddingVertical8}
+        contentContainerStyle={[
+          Styles.paddingVertical8,
+          list.length === 0 && Styles.flexCenter,
+        ]}
         data={list}
         keyExtractor={item => item?.value}
-        renderItem={renderItem}
+        renderItem={buildItem}
+        ListEmptyComponent={
+          <Image style={styles.empty} source={Images.empty} />
+        }
       />
     );
   }),
