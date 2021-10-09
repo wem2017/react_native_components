@@ -1,6 +1,7 @@
 import Text, {getFontFamily} from './Text';
 import Button from './Button';
 import TextInput from './TextInput';
+import CheckBox from './CheckBox';
 import Icon from './Icon';
 import Container from './Container';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -18,6 +19,7 @@ import PopupAlert from './PopupAlert';
 
 export {
   TextInput,
+  CheckBox,
   Image,
   Text,
   getFontFamily,

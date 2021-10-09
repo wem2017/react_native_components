@@ -81,6 +81,21 @@ const Index = forwardRef((props, ref) => {
   };
 
   /**
+   * get size style
+   */
+  const getIconSizeStyle = () => {
+    switch (size) {
+      case 'large':
+        return 24;
+      case 'small':
+        return 16;
+
+      default:
+        return 24;
+    }
+  };
+
+  /**
    * on clear text
    */
   const onClear = () => {
@@ -124,7 +139,11 @@ const Index = forwardRef((props, ref) => {
     if (value) {
       return (
         <TouchableOpacity onPress={onClear}>
-          <Icon name="close-circle-outline" color={colors.text} size={24} />
+          <Icon
+            name="close-circle"
+            color={colors.text}
+            size={getIconSizeStyle()}
+          />
         </TouchableOpacity>
       );
     }
@@ -175,6 +194,7 @@ Index.propTypes = {
   size: PropTypes.oneOf(['large', 'small']),
   label: PropTypes.string,
   value: PropTypes.string,
+  autoCapitalize: PropTypes.string,
   placeholder: PropTypes.string,
   error: PropTypes.string,
   info: PropTypes.bool,
@@ -188,7 +208,8 @@ Index.defaultProps = {
   size: 'large',
   label: 'Label',
   value: '',
-  placeholder: 'Placeholder',
+  autoCapitalize: 'none',
+  placeholder: null,
   error: null,
   info: false,
   onPressInfo: () => {},

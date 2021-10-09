@@ -80,6 +80,7 @@ const Index = forwardRef((props, ref) => {
 
   /**
    * build input type
+   * you need use Input of package @gorhom/bottom-sheet for bottom sheet iput
    * @return {*}
    */
   const buildInputType = () => {

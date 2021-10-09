@@ -18,6 +18,9 @@ import {Text, SearchInput, Icon, SafeAreaView, Image} from '@components';
 import {Styles, useTheme, Images} from '@configs';
 import styles from './styles';
 
+/**
+ * Memo Search Input
+ */
 const MemoInput = memo(({value, onChangeText}) => {
   const [keyword, setKeyword] = useState(value);
 
@@ -33,6 +36,9 @@ const MemoInput = memo(({value, onChangeText}) => {
   );
 });
 
+/**
+ * Memo List
+ */
 const MemoList = memo(
   forwardRef(({data}, ref) => {
     const {colors} = useTheme();

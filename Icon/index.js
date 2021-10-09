@@ -73,6 +73,8 @@ export default function Icon(props) {
 
 Icon.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  name: PropTypes.string,
+  size: PropTypes.number,
   type: PropTypes.oneOf([
     'AntDesign',
     'Entypo',
@@ -93,6 +95,8 @@ Icon.propTypes = {
 
 Icon.defaultProps = {
   style: {},
+  name: 'help-circle-outline',
+  size: 24,
   type: 'MaterialCommunityIcons',
   enableRTL: false,
 };

@@ -45,12 +45,9 @@ export default StyleSheet.create({
     overflow: 'hidden',
   },
   trailingContent: {
-    width: 24,
-    height: 24,
     marginLeft: 12,
     justifyContent: 'center',
     alignItems: 'center',
-    overflow: 'hidden',
   },
   errorContent: {
     marginTop: 4,

@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import {useTheme, useFont, Colors} from '@configs';
 import styles from './styles';
 
+/**
+ * Define weight with Raleway font
+ */
 const Raleway = {
   100: 'Thin',
   200: 'ExtraLight',
@@ -18,6 +21,9 @@ const Raleway = {
   bold: 'Bold',
 };
 
+/**
+ * Define weight with SFProText font
+ */
 const SFProText = {
   100: 'Thin',
   200: 'Ultralight',
@@ -32,6 +38,9 @@ const SFProText = {
   bold: 'Bold',
 };
 
+/**
+ * Define weight of font
+ */
 const FontWeight = {
   thin: '100',
   ultraLight: '200',
@@ -44,6 +53,10 @@ const FontWeight = {
   black: '900',
 };
 
+/**
+ * export font fontFamily for font
+ * @return {*}
+ */
 export const getFontFamily = ({
   fontFamily = 'SFProText',
   fontWeight = 'normal',
@@ -62,6 +75,10 @@ export default function Index(props) {
   const font = useFont();
   const {typography, weight, type, color, children, style} = props;
 
+  /**
+   * typography style
+   * @return {*}
+   */
   const getTypography = value => {
     switch (value) {
       case 'h1':
@@ -85,6 +102,10 @@ export default function Index(props) {
     }
   };
 
+  /**
+   * weight style
+   * @return {*}
+   */
   const getFontWeight = value => {
     switch (value) {
       case 'thin':
@@ -110,6 +131,10 @@ export default function Index(props) {
     }
   };
 
+  /**
+   * type style
+   * @return {*}
+   */
   const getType = value => {
     switch (value) {
       case 'primary':
@@ -121,6 +146,10 @@ export default function Index(props) {
     }
   };
 
+  /**
+   * color style
+   * @return {*}
+   */
   const getColor = value => {
     switch (value) {
       case 'primary':
@@ -161,7 +190,6 @@ export default function Index(props) {
   );
 }
 
-// Define typechecking
 Index.propTypes = {
   typography: PropTypes.oneOf([
     'h1',

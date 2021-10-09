@@ -23,7 +23,7 @@ export default function PopupAlert(props) {
    */
   const onPressPrimaryAction = () => {
     Navigator.pop();
-    primaryButton.onPress();
+    primaryButton.onPress?.();
   };
 
   /**
@@ -31,7 +31,7 @@ export default function PopupAlert(props) {
    */
   const onPressSecondaryAction = () => {
     Navigator.pop();
-    secondaryButton.onPress();
+    secondaryButton.onPress?.();
   };
 
   /**
@@ -65,7 +65,7 @@ export default function PopupAlert(props) {
               style={styles.textAction}>
               {secondaryButton.title}
             </Button>
-            <SizedBox width={24} />
+            <View style={styles.space24} />
           </>
         );
       }
@@ -77,7 +77,7 @@ export default function PopupAlert(props) {
             onPress={onPressSecondaryAction}>
             {secondaryButton.title}
           </Button>
-          <SizedBox width={16} />
+          <View style={styles.space16} />
         </>
       );
     }
@@ -142,11 +142,11 @@ PopupAlert.propTypes = {
   message: PropTypes.string,
   primaryButton: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    onPress: PropTypes.func.isRequired,
+    onPress: PropTypes.func,
   }).isRequired,
   secondaryButton: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    onPress: PropTypes.func.isRequired,
+    onPress: PropTypes.func,
   }),
   imageType: PropTypes.oneOf(['full', 'icon']),
   buttonType: PropTypes.oneOf(['primary', 'text']),

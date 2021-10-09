@@ -23,4 +23,6 @@ export default StyleSheet.create({
     top: -42,
   },
   fullImage: {height: 164, width: '100%'},
+  space24: {width: 24},
+  space16: {width: 16},
 });
