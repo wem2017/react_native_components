@@ -7,9 +7,9 @@ import {Styles} from '@configs';
 
 export default function Container(props) {
   const headerHeight = useHeaderHeight();
-  const {style, children} = props;
+  const {style, children, edges} = props;
   return (
-    <SafeAreaView style={[Styles.flex, style]} edges={['bottom']}>
+    <SafeAreaView style={[Styles.flex, style]} edges={edges}>
       <KeyboardAvoidingView
         style={Styles.flex}
         keyboardVerticalOffset={headerHeight}
@@ -26,9 +26,11 @@ export default function Container(props) {
 Container.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   children: PropTypes.node,
+  edges: PropTypes.array,
 };
 
 Container.defaultProps = {
   styles: {},
   children: null,
+  edges: ['bottom'],
 };

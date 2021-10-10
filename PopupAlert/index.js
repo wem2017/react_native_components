@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import PropTypes from 'prop-types';
-import {Button, Image, SizedBox, Text} from '@components';
+import {Button, Image, Text} from '@components';
 import {Styles, useTheme} from '@configs';
 import Navigator from '@navigator';
 import styles from './styles';
@@ -49,6 +49,7 @@ export default function PopupAlert(props) {
     }
     return <Image source={image} style={styles.fullImage} />;
   };
+
   /**
    * build secondary button
    * @return {*}
