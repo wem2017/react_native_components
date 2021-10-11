@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {Colors} from '@configs';
 
 export default StyleSheet.create({
   container: {borderRadius: 12},
@@ -14,5 +15,6 @@ export default StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 12,
+    backgroundColor: Colors.white,
   },
 });

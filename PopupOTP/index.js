@@ -114,13 +114,7 @@ export default function PopupOTP(props) {
           Navigator.pop();
           onClose();
         }}>
-        <View
-          style={[
-            styles.closeIcon,
-            {
-              backgroundColor: colors.card,
-            },
-          ]}>
+        <View style={styles.closeIcon}>
           <Icon name="close-circle" />
         </View>
       </TouchableOpacity>
