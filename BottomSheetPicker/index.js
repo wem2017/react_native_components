@@ -40,21 +40,21 @@ const MemoInput = memo(({value, onChangeText}) => {
  * Memo List
  */
 const MemoList = memo(
-  forwardRef(({data}, ref) => {
+  forwardRef((props, ref) => {
     const {colors} = useTheme();
-    const [list, setList] = useState(data);
-    const [selected, setSelected] = useState();
+    const [list, setList] = useState(props.data);
+    const [selected, setSelected] = useState(props.selected);
 
     useImperativeHandle(ref, () => ({
       onChangeText: value => {
         if (value) {
           setList(
-            data.filter(item =>
+            props.Imagedata.filter(item =>
               item.title?.toUpperCase().includes(value.toUpperCase()),
             ),
           );
         } else {
-          setList(data);
+          setList(props.data);
         }
       },
       selected,
@@ -118,7 +118,7 @@ const Index = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => bottomSheetRef.current);
 
-  const {search, title, data, initHeight, onSelect} = props;
+  const {search, title, data, initHeight, selected, onSelect} = props;
 
   const snapPoints = useMemo(() => [initHeight, '100%'], [initHeight]);
 
@@ -132,7 +132,7 @@ const Index = forwardRef((props, ref) => {
   return (
     <BottomSheetModal
       ref={bottomSheetRef}
-      backgroundStyle={{backgroundColor: colors.card}}
+      backgroundStyle={[styles.container, {backgroundColor: colors.card}]}
       snapPoints={snapPoints}
       keyboardBehavior={'interactive'}
       keyboardBlurBehavior={'none'}
@@ -183,7 +183,7 @@ const Index = forwardRef((props, ref) => {
         />
       )}
       enablePanDownToClose={true}>
-      <MemoList ref={listRef} data={data} />
+      <MemoList ref={listRef} data={data} selected={selected} />
     </BottomSheetModal>
   );
 });
@@ -195,6 +195,7 @@ Index.propTypes = {
   title: PropTypes.string,
   data: PropTypes.array,
   initHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  selected: PropTypes.object,
   onSelect: PropTypes.func,
 };
 
@@ -214,5 +215,6 @@ Index.defaultProps = {
     },
   ],
   initHeight: '50%',
+  selected: null,
   onSelect: value => {},
 };
