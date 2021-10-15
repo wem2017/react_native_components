@@ -185,7 +185,7 @@ export default function Index(props) {
 
   return (
     <Text {...props} style={textStyle}>
-      {children ?? ''}
+      {children ?? ' '}
     </Text>
   );
 }

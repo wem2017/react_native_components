@@ -180,7 +180,7 @@ const Index = forwardRef((props, ref) => {
         </View>
       </View>
       <Text typography="subtitle" color="error" style={styles.errorContent}>
-        {error ?? ''}
+        {error}
       </Text>
     </View>
   );
