@@ -11,7 +11,7 @@ import {Text} from '@components';
 import styles from './styles';
 
 export default function Button(props) {
-  const {colors} = useTheme();
+  const {theme} = useTheme();
   const {
     style,
     textStyle,
@@ -48,29 +48,29 @@ export default function Button(props) {
   const getTypeStyle = () => {
     if (disabled) {
       return {
-        backgroundColor: colors.border,
+        backgroundColor: theme.colors.border,
       };
     }
     switch (type) {
       case 'primary':
-        return {backgroundColor: colors.primary};
+        return {backgroundColor: theme.colors.primary};
       case 'secondary':
         return {
-          backgroundColor: colors.card,
+          backgroundColor: theme.colors.card,
           borderWidth: 1,
-          borderColor: colors.border,
+          borderColor: theme.colors.border,
         };
       case 'outline':
         return {
-          backgroundColor: colors.card,
+          backgroundColor: theme.colors.card,
           borderWidth: 1,
-          borderColor: colors.primary,
+          borderColor: theme.colors.primary,
         };
       case 'text':
         return {};
 
       default:
-        return {backgroundColor: colors.primary};
+        return {backgroundColor: theme.colors.primary};
     }
   };
 
@@ -79,19 +79,19 @@ export default function Button(props) {
    */
   const getLoadingColor = () => {
     if (disabled) {
-      return colors.textSecondary;
+      return theme.colors.textSecondary;
     }
     switch (type) {
       case 'primary':
         return Colors.white;
       case 'secondary':
-        return colors.text;
+        return theme.colors.text;
       case 'outline':
-        return colors.primary;
+        return theme.colors.primary;
       case 'text':
-        return colors.primary;
+        return theme.colors.primary;
       default:
-        return colors.primary;
+        return theme.colors.primary;
     }
   };
 

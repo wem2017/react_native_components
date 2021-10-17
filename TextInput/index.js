@@ -2,12 +2,11 @@ import React, {useState, useRef, forwardRef, useImperativeHandle} from 'react';
 import {TextInput, View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Text, Icon, getFontFamily} from '@components';
-import {useTheme, useFont} from '@configs';
+import {useTheme} from '@configs';
 import styles from './styles';
 
 const Index = forwardRef((props, ref) => {
-  const {colors} = useTheme();
-  const font = useFont();
+  const {theme, font} = useTheme();
   const {
     style,
     type,
@@ -31,12 +30,12 @@ const Index = forwardRef((props, ref) => {
    */
   const getBorderColor = () => {
     if (error) {
-      return colors.error;
+      return theme.colors.error;
     }
     if (focus) {
-      return colors.primaryLight;
+      return theme.colors.primaryLight;
     }
-    return colors.border;
+    return theme.colors.border;
   };
 
   /**
@@ -126,7 +125,11 @@ const Index = forwardRef((props, ref) => {
     if (info) {
       return (
         <TouchableOpacity style={styles.rowInfo} onPress={onPressInfo}>
-          <Icon name="information-outline" color={colors.secondary} size={16} />
+          <Icon
+            name="information-outline"
+            color={theme.colors.secondary}
+            size={16}
+          />
         </TouchableOpacity>
       );
     }
@@ -139,11 +142,7 @@ const Index = forwardRef((props, ref) => {
     if (value) {
       return (
         <TouchableOpacity onPress={onClear}>
-          <Icon
-            name="close-circle"
-            color={colors.text}
-            size={getIconSizeStyle()}
-          />
+          <Icon name="close-circle" size={getIconSizeStyle()} />
         </TouchableOpacity>
       );
     }
@@ -165,13 +164,18 @@ const Index = forwardRef((props, ref) => {
           <TextInput
             {...props}
             ref={inputRef}
-            style={[styles.inputContent, {color: colors.text}, getTextStyle()]}
+            style={[
+              styles.inputContent,
+              {color: theme.colors.text},
+              getTextStyle(),
+            ]}
             onFocus={onFocus}
             onBlur={onBlur}
           />
           {buildClear()}
           {buildTrailing()}
-          <View style={[styles.infoContent, {backgroundColor: colors.card}]}>
+          <View
+            style={[styles.infoContent, {backgroundColor: theme.colors.card}]}>
             <Text typography="subtitle" type="secondary">
               {label}
             </Text>

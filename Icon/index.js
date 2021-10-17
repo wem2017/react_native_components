@@ -14,9 +14,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
+import {useTheme} from '@configs';
 import styles from './styles';
 
 export default function Icon(props) {
+  const {theme} = useTheme();
   const {style, type, enableRTL} = props;
   let Component;
   switch (type) {
@@ -66,6 +68,7 @@ export default function Icon(props) {
   return (
     <Component
       style={StyleSheet.flatten([enableRTL && styles.styleRTL, style])}
+      color={theme.colors.text}
       {...props}
     />
   );

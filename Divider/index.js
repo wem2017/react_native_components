@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import {useTheme} from '@configs';
 import styles from './styles';
 export default function Divider(props) {
-  const {colors} = useTheme();
+  const {theme} = useTheme();
   const {color, thickness} = props;
   return (
     <View
       style={[
         styles.default,
         {
-          backgroundColor: color ?? colors.border,
+          backgroundColor: color ?? theme.colors.border,
           height: thickness,
         },
       ]}

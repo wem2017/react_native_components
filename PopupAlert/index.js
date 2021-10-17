@@ -7,7 +7,7 @@ import Navigator from '@navigator';
 import styles from './styles';
 
 export default function PopupAlert(props) {
-  const {colors} = useTheme();
+  const {theme} = useTheme();
   const {
     image,
     title,
@@ -98,7 +98,7 @@ export default function PopupAlert(props) {
             type="text"
             full={false}
             style={styles.textAction}
-            textStyle={{color: colors.primary}}>
+            textStyle={{color: theme.colors.primary}}>
             {primaryButton.title}
           </Button>
         </View>
@@ -119,7 +119,7 @@ export default function PopupAlert(props) {
       style={[
         styles.container,
         {
-          backgroundColor: colors.card,
+          backgroundColor: theme.colors.card,
         },
         imageType === 'full' && styles.hiddenOverflow,
       ]}>

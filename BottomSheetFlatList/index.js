@@ -12,7 +12,7 @@ import {useTheme} from '@configs';
 import styles from './styles';
 
 const Index = forwardRef((props, ref) => {
-  const {colors} = useTheme();
+  const {theme} = useTheme();
   const bottomSheetRef = useRef(null);
   useImperativeHandle(ref, () => bottomSheetRef.current);
   const {bottom} = useSafeAreaInsets();
@@ -24,7 +24,7 @@ const Index = forwardRef((props, ref) => {
   return (
     <BottomSheetModal
       ref={bottomSheetRef}
-      backgroundStyle={{backgroundColor: colors.card}}
+      backgroundStyle={{backgroundColor: theme.colors.card}}
       snapPoints={snapPoints}
       keyboardBehavior={'interactive'}
       keyboardBlurBehavior={'none'}
@@ -33,7 +33,9 @@ const Index = forwardRef((props, ref) => {
       handleComponent={() => (
         <SafeAreaView edges={['right', 'top', 'left']}>
           <View style={styles.indicatorContainer}>
-            <View style={[styles.indicator, {backgroundColor: colors.card}]} />
+            <View
+              style={[styles.indicator, {backgroundColor: theme.colors.card}]}
+            />
           </View>
           {header}
         </SafeAreaView>

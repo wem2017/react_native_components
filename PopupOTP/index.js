@@ -2,12 +2,12 @@ import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Text, OTPInput, Icon} from '@components';
-import {Styles, useTheme} from '@configs';
+import {Styles, useTheme, Colors} from '@configs';
 import Navigator from '@navigator';
 import styles from './styles';
 
 export default function PopupOTP(props) {
-  const {colors} = useTheme();
+  const {theme} = useTheme();
   const otpRef = useRef();
 
   const [error, setError] = useState();
@@ -90,7 +90,7 @@ export default function PopupOTP(props) {
       style={[
         styles.container,
         {
-          backgroundColor: colors.card,
+          backgroundColor: theme.colors.card,
         },
       ]}>
       <View style={Styles.padding24}>
@@ -115,7 +115,7 @@ export default function PopupOTP(props) {
           onClose();
         }}>
         <View style={styles.closeIcon}>
-          <Icon name="close-circle" />
+          <Icon name="close-circle" color={Colors.black} />
         </View>
       </TouchableOpacity>
     </View>

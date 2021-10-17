@@ -2,13 +2,12 @@ import React, {useImperativeHandle, useState, useRef, forwardRef} from 'react';
 import {View, TextInput, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {BottomSheetTextInput} from '@gorhom/bottom-sheet';
-import {useTheme, useFont, Styles} from '@configs';
+import {useTheme, Styles} from '@configs';
 import {Icon, getFontFamily} from '@components';
 import styles from './styles';
 
 const Index = forwardRef((props, ref) => {
-  const {colors} = useTheme();
-  const font = useFont();
+  const {theme, font} = useTheme();
   const inputRef = useRef();
   const [focus, setFocus] = useState(false);
 
@@ -21,9 +20,9 @@ const Index = forwardRef((props, ref) => {
    */
   const getBorderColor = () => {
     if (focus) {
-      return colors.primaryLight;
+      return theme.colors.primaryLight;
     }
-    return colors.background;
+    return theme.colors.background;
   };
 
   /**
@@ -31,9 +30,9 @@ const Index = forwardRef((props, ref) => {
    */
   const getBackgroundColor = () => {
     if (focus) {
-      return colors.card;
+      return theme.colors.card;
     }
-    return colors.background;
+    return theme.colors.background;
   };
 
   /**
@@ -69,7 +68,6 @@ const Index = forwardRef((props, ref) => {
         <TouchableOpacity onPress={onClear}>
           <Icon
             name="close-circle-outline"
-            color={colors.text}
             size={20}
             style={Styles.paddingHorizontal8}
           />
@@ -96,13 +94,13 @@ const Index = forwardRef((props, ref) => {
             style={[
               styles.input,
               {
-                color: colors.text,
+                color: theme.colors.text,
                 fontFamily: getFontFamily({
                   fontFamily: font,
                 }),
               },
             ]}
-            placeholderTextColor={colors.textSecondary}
+            placeholderTextColor={theme.colors.textSecondary}
           />
         );
 
@@ -117,13 +115,13 @@ const Index = forwardRef((props, ref) => {
             style={[
               styles.input,
               {
-                color: colors.text,
+                color: theme.colors.text,
                 fontFamily: getFontFamily({
                   fontFamily: font,
                 }),
               },
             ]}
-            placeholderTextColor={colors.textSecondary}
+            placeholderTextColor={theme.colors.textSecondary}
           />
         );
     }
@@ -140,8 +138,7 @@ const Index = forwardRef((props, ref) => {
         style,
       ]}>
       <Icon
-        size={24}
-        color={colors.textSecondary}
+        color={theme.colors.textSecondary}
         name="magnify"
         style={styles.searchIcon}
       />

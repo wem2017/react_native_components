@@ -41,7 +41,7 @@ const MemoInput = memo(({value, onChangeText}) => {
  */
 const MemoList = memo(
   forwardRef((props, ref) => {
-    const {colors} = useTheme();
+    const {theme} = useTheme();
     const [list, setList] = useState(props.data);
     const [selected, setSelected] = useState(props.selected);
 
@@ -70,9 +70,9 @@ const MemoList = memo(
       let trailing;
       if (item.value === selected?.value) {
         style = {
-          backgroundColor: colors.primary + '1A',
+          backgroundColor: theme.colors.primary + '1A',
         };
-        trailing = <Icon name="check" size={24} color={colors.primary} />;
+        trailing = <Icon name="check" color={theme.colors.primary} />;
       }
       return (
         <TouchableOpacity
@@ -111,7 +111,7 @@ const MemoList = memo(
 );
 
 const Index = forwardRef((props, ref) => {
-  const {colors} = useTheme();
+  const {theme} = useTheme();
   const bottomSheetRef = useRef(null);
   const listRef = useRef(null);
   const {t} = useTranslation();
@@ -132,7 +132,7 @@ const Index = forwardRef((props, ref) => {
   return (
     <BottomSheetModal
       ref={bottomSheetRef}
-      backgroundStyle={[styles.container, {backgroundColor: colors.card}]}
+      backgroundStyle={[styles.container, {backgroundColor: theme.colors.card}]}
       snapPoints={snapPoints}
       keyboardBehavior={'interactive'}
       keyboardBlurBehavior={'none'}
@@ -140,10 +140,15 @@ const Index = forwardRef((props, ref) => {
       handleComponent={() => (
         <SafeAreaView edges={['right', 'top', 'left']}>
           <View style={styles.indicatorContainer}>
-            <View style={[styles.indicator, {backgroundColor: colors.card}]} />
+            <View
+              style={[styles.indicator, {backgroundColor: theme.colors.card}]}
+            />
           </View>
           <View
-            style={[styles.contentTitle, {borderBottomColor: colors.border}]}>
+            style={[
+              styles.contentTitle,
+              {borderBottomColor: theme.colors.border},
+            ]}>
             <TouchableOpacity onPress={() => bottomSheetRef.current.dismiss()}>
               <Text typography="title" weight="bold" style={styles.textButton}>
                 {t('cancel')}

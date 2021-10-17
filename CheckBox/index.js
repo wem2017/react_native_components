@@ -5,7 +5,7 @@ import {Icon} from '@components';
 import {useTheme} from '@configs';
 
 export default function CheckBox(props) {
-  const {colors} = useTheme();
+  const {theme} = useTheme();
   const {style, value, disabled, size, shape, onPress} = props;
 
   /**
@@ -34,12 +34,12 @@ export default function CheckBox(props) {
    */
   const getIconColor = () => {
     if (disabled) {
-      return colors.textSecondary;
+      return theme.colors.textSecondary;
     }
     if (value) {
-      return colors.primary;
+      return theme.colors.primary;
     }
-    return colors.text;
+    return theme.colors.text;
   };
 
   return (

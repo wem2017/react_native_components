@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import {useTheme, useFont, Colors} from '@configs';
+import {useTheme, Colors} from '@configs';
 import styles from './styles';
 
 /**
@@ -71,8 +71,7 @@ export const getFontFamily = ({
   }
 };
 export default function Index(props) {
-  const {colors} = useTheme();
-  const font = useFont();
+  const {theme, font} = useTheme();
   const {typography, weight, type, color, children, style} = props;
 
   /**
@@ -138,11 +137,11 @@ export default function Index(props) {
   const getType = value => {
     switch (value) {
       case 'primary':
-        return {color: colors.text};
+        return {color: theme.colors.text};
       case 'secondary':
-        return {color: colors.textSecondary};
+        return {color: theme.colors.textSecondary};
       default:
-        return {color: colors.text};
+        return {color: theme.colors.text};
     }
   };
 
@@ -153,15 +152,13 @@ export default function Index(props) {
   const getColor = value => {
     switch (value) {
       case 'primary':
-        return {color: colors.primary};
+        return {color: theme.colors.primary};
       case 'secondary':
-        return {color: colors.secondary};
+        return {color: theme.colors.secondary};
       case 'white':
         return {color: Colors.white};
       case 'error':
-        return {color: colors.error};
-      case 'notification':
-        return {color: colors.notification};
+        return {color: theme.colors.error};
       default:
         return {};
     }
@@ -213,14 +210,7 @@ Index.propTypes = {
     'black',
   ]),
   type: PropTypes.oneOf(['primary', 'secondary']),
-  color: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'white',
-    'error',
-    'notification',
-    'none',
-  ]),
+  color: PropTypes.oneOf(['primary', 'secondary', 'white', 'error', 'none']),
   children: PropTypes.node,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };

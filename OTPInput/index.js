@@ -3,13 +3,12 @@ import {View, I18nManager} from 'react-native';
 import PropTypes from 'prop-types';
 import OtpInputs from 'react-native-otp-inputs';
 import {getFontFamily, Text} from '@components';
-import {useTheme, useFont} from '@configs';
+import {useTheme} from '@configs';
 import styles from './styles';
 
 const OTPInput = forwardRef((props, ref) => {
   const otpRef = useRef();
-  const {colors} = useTheme();
-  const font = useFont();
+  const {theme, font} = useTheme();
   const {style, error} = props;
 
   useImperativeHandle(ref, () => otpRef.current);
@@ -23,16 +22,16 @@ const OTPInput = forwardRef((props, ref) => {
         isRTL={I18nManager.isRTL}
         inputContainerStyles={[
           styles.cellOtpContainer,
-          {borderColor: colors.border},
-          error && {borderColor: colors.primary},
+          {borderColor: theme.colors.border},
+          error && {borderColor: theme.colors.primary},
         ]}
         focusStyles={{
-          borderColor: colors.primary,
+          borderColor: theme.colors.primary,
         }}
         inputStyles={[
           styles.cellTextInput,
           {
-            color: colors.text,
+            color: theme.colors.text,
             fontFamily: getFontFamily({
               fontFamily: font,
               fontWeight: 'bold',
