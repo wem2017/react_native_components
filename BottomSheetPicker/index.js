@@ -15,7 +15,7 @@ import {View, TouchableOpacity} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import PropTypes from 'prop-types';
 import {Text, SearchInput, Icon, SafeAreaView, Image} from '@components';
-import {Styles, useTheme, Images} from '@configs';
+import {Styles, useTheme, Images, Opacity} from '@configs';
 import styles from './styles';
 
 /**
@@ -70,7 +70,7 @@ const MemoList = memo(
       let trailing;
       if (item.value === selected?.value) {
         style = {
-          backgroundColor: theme.colors.primary + '1A',
+          backgroundColor: theme.colors.primary + Opacity[10],
         };
         trailing = <Icon name="check" color={theme.colors.primary} />;
       }
