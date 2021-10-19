@@ -49,7 +49,7 @@ const MemoList = memo(
       onChangeText: value => {
         if (value) {
           setList(
-            props.Imagedata.filter(item =>
+            props.data.filter(item =>
               item.title?.toUpperCase().includes(value.toUpperCase()),
             ),
           );
