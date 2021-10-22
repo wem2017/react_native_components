@@ -112,6 +112,22 @@ export default function Button(props) {
   };
 
   /**
+   * export icon size
+   */
+  const getIconSpace = () => {
+    switch (size) {
+      case 'large':
+      case 'medium':
+        return 8;
+      case 'small':
+        return 4;
+
+      default:
+        return 8;
+    }
+  };
+
+  /**
    * export typography style
    */
   const getTypography = () => {
@@ -209,8 +225,13 @@ export default function Button(props) {
   const buildLeading = () => {
     if (leading) {
       const iconSize = getIconSize();
+      const marginRight = getIconSpace();
       return (
-        <View style={[styles.leading, {width: iconSize, height: iconSize}]}>
+        <View
+          style={[
+            styles.leading,
+            {width: iconSize, height: iconSize, marginRight},
+          ]}>
           {leading}
         </View>
       );
@@ -221,9 +242,10 @@ export default function Button(props) {
    * build trailing
    */
   const buildTrailing = () => {
+    const marginLeft = getIconSpace();
     if (loading) {
       return (
-        <View style={styles.trailing}>
+        <View style={[styles.trailing, {marginLeft}]}>
           <View style={Styles.flexCenter}>
             <ActivityIndicator color={getLoadingColor()} />
           </View>
@@ -233,7 +255,11 @@ export default function Button(props) {
     if (trailing) {
       const iconSize = getIconSize();
       return (
-        <View style={[styles.trailing, {width: iconSize, height: iconSize}]}>
+        <View
+          style={[
+            styles.trailing,
+            {width: iconSize, height: iconSize, marginLeft},
+          ]}>
           {trailing}
         </View>
       );
