@@ -81,7 +81,7 @@ const MemoList = memo(
           {item.icon && (
             <Image
               style={styles.icon}
-              source={{uri: item.icon}}
+              source={item.icon}
               resizeMode="contain"
             />
           )}
