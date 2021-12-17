@@ -140,7 +140,7 @@ export default function PopupAlert(props) {
 PopupAlert.propTypes = {
   image: PropTypes.any,
   title: PropTypes.string,
-  message: PropTypes.string,
+  message: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   primaryButton: PropTypes.shape({
     title: PropTypes.string.isRequired,
     onPress: PropTypes.func,

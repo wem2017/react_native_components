@@ -7,7 +7,6 @@ import {
   BottomSheetBackdrop,
 } from '@gorhom/bottom-sheet';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {SafeAreaView} from '@components';
 import {useTheme} from '@configs';
 import styles from './styles';
 
@@ -31,14 +30,14 @@ const Index = forwardRef((props, ref) => {
       stackBehavior="push"
       onDismiss={onDismiss}
       handleComponent={() => (
-        <SafeAreaView edges={['right', 'top', 'left']}>
+        <>
           <View style={styles.indicatorContainer}>
             <View
               style={[styles.indicator, {backgroundColor: theme.colors.card}]}
             />
           </View>
           {header}
-        </SafeAreaView>
+        </>
       )}
       backdropComponent={backdropProps => (
         <BottomSheetBackdrop

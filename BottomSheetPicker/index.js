@@ -14,7 +14,7 @@ import {
 import {View, TouchableOpacity} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import PropTypes from 'prop-types';
-import {Text, SearchInput, Icon, SafeAreaView, Image} from '@components';
+import {Text, SearchInput, Icon, Image} from '@components';
 import {Styles, useTheme, Images, Opacity} from '@configs';
 import styles from './styles';
 
@@ -120,7 +120,7 @@ const Index = forwardRef((props, ref) => {
 
   const {search, title, data, initHeight, selected, onSelect} = props;
 
-  const snapPoints = useMemo(() => [initHeight, '100%'], [initHeight]);
+  const snapPoints = useMemo(() => [initHeight, '94%'], [initHeight]);
 
   /**
    * on change search
@@ -138,7 +138,7 @@ const Index = forwardRef((props, ref) => {
       keyboardBlurBehavior={'none'}
       stackBehavior="push"
       handleComponent={() => (
-        <SafeAreaView edges={['right', 'top', 'left']}>
+        <>
           <View style={styles.indicatorContainer}>
             <View
               style={[styles.indicator, {backgroundColor: theme.colors.card}]}
@@ -178,7 +178,7 @@ const Index = forwardRef((props, ref) => {
               <MemoInput type="bottomsheet" onChangeText={onChangeText} />
             </View>
           )}
-        </SafeAreaView>
+        </>
       )}
       backdropComponent={backdropProps => (
         <BottomSheetBackdrop
