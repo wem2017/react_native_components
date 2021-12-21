@@ -65,8 +65,6 @@ const Index = forwardRef((props, ref) => {
   );
 });
 
-export default Index;
-
 Index.propTypes = {
   enablePanDownToClose: PropTypes.bool,
   onDismiss: PropTypes.func,
@@ -80,3 +78,5 @@ Index.defaultProps = {
   header: null,
   children: null,
 };
+
+export default Index;

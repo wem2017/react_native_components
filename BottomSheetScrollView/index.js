@@ -54,8 +54,6 @@ const Index = forwardRef((props, ref) => {
   );
 });
 
-export default Index;
-
 Index.propTypes = {
   initHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   enablePanDownToClose: PropTypes.bool,
@@ -71,3 +69,5 @@ Index.defaultProps = {
   header: null,
   children: null,
 };
+
+export default Index;

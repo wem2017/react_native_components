@@ -148,8 +148,6 @@ const Index = forwardRef((props, ref) => {
   );
 });
 
-export default Index;
-
 Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   type: PropTypes.oneOf(['default', 'bottomsheet']),
@@ -163,3 +161,5 @@ Index.defaultProps = {
   value: '',
   placeholder: 'Search...',
 };
+
+export default Index;

@@ -34,22 +34,12 @@ export default function Image(props) {
 
 Image.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  source: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.shape({
-      uri: PropTypes.string,
-      cache: PropTypes.oneOf(['immutable', 'web', 'cacheOnly']),
-      priority: PropTypes.oneOf(['low', 'normal', 'high']),
-      headers: PropTypes.object,
-    }),
-  ]),
   resizeMode: PropTypes.oneOf(['contain', 'cover', 'stretch', 'center']),
   placeholder: PropTypes.bool,
 };
 
 Image.defaultProps = {
   style: {},
-  source: {},
   resizeMode: 'cover',
   placeholder: true,
 };

@@ -46,8 +46,6 @@ const OTPInput = forwardRef((props, ref) => {
   );
 });
 
-export default OTPInput;
-
 OTPInput.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   error: PropTypes.string,
@@ -57,3 +55,5 @@ OTPInput.defaultProps = {
   style: {},
   error: null,
 };
+
+export default OTPInput;

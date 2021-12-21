@@ -17,6 +17,8 @@ import BottomSheetPicker from './BottomSheetPicker';
 import SearchInput from './SearchInput';
 import PopupAlert from './PopupAlert';
 import PopupOTP from './PopupOTP';
+import CornerStone from './CornerStone';
+import ProductItem from './ProductItem';
 
 export {
   TextInput,
@@ -39,4 +41,6 @@ export {
   SearchInput,
   PopupAlert,
   PopupOTP,
+  CornerStone,
+  ProductItem,
 };

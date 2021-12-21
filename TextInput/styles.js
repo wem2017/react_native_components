@@ -49,7 +49,4 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  errorContent: {
-    marginTop: 4,
-  },
 });

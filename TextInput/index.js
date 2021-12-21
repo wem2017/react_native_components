@@ -1,7 +1,7 @@
 import React, {useState, useRef, forwardRef, useImperativeHandle} from 'react';
 import {TextInput, View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import {Text, Icon, getFontFamily} from '@components';
+import {Text, Icon, getFontFamily, SizedBox} from '@components';
 import {useTheme} from '@configs';
 import styles from './styles';
 
@@ -183,14 +183,13 @@ const Index = forwardRef((props, ref) => {
           </View>
         </View>
       </View>
-      <Text typography="subtitle" color="error" style={styles.errorContent}>
+      <SizedBox height={8} />
+      <Text typography="subtitle" color="error">
         {error}
       </Text>
     </View>
   );
 });
-
-export default Index;
 
 Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -219,3 +218,5 @@ Index.defaultProps = {
   onPressInfo: () => {},
   trailing: null,
 };
+
+export default Index;

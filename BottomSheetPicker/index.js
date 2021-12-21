@@ -193,8 +193,6 @@ const Index = forwardRef((props, ref) => {
   );
 });
 
-export default Index;
-
 Index.propTypes = {
   search: PropTypes.bool,
   title: PropTypes.string,
@@ -223,3 +221,5 @@ Index.defaultProps = {
   selected: null,
   onSelect: value => {},
 };
+
+export default Index;
