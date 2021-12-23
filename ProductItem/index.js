@@ -2,23 +2,49 @@ import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {Icon, Image, SizedBox, Text} from '@components';
-import {useTheme, Images} from '@configs';
+import {useTheme, Styles} from '@configs';
+import {getCurrency} from '@utils';
 import styles from './styles';
 
 export default function ProductItem(props) {
   const {theme} = useTheme();
   const {style, item, onPress} = props;
 
+  /**
+   * build status
+   *
+   */
+  const buildStatus = status => {
+    if (status) {
+      return <View style={styles.status}></View>;
+    }
+  };
+
   return (
     <TouchableOpacity onPress={onPress} style={[styles.listContainer, style]}>
-      <Image
-        style={{height: '100%', width: 120}}
-        source={item.image}
-        resizeMode="cover"
-      />
+      <View style={styles.image}>
+        <Image style={Styles.flex} source={item.image} resizeMode="cover" />
+        {buildStatus()}
+      </View>
       <SizedBox width={8} />
-      <View style={{paddingVertical: 4}}>
-        <Text>dasdsa</Text>
+      <View style={[Styles.paddingVertical4, Styles.flex]}>
+        <Text typography="caption" type="secondary">
+          {item.subtitle}
+        </Text>
+        <SizedBox height={4} />
+        <Text typography="title" weight="medium">
+          {item.title}
+        </Text>
+        <SizedBox height={4} />
+        <Text typography="title" weight="medium">
+          {getCurrency(item.price)}
+        </Text>
+        <TouchableOpacity style={styles.favorite}>
+          <Icon
+            name={item.favorite ? 'heart' : 'heart-outline'}
+            color={theme.colors.primary}
+          />
+        </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );
