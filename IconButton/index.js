@@ -25,6 +25,21 @@ export default function IconButton(props) {
   };
 
   /**
+   * export size icon
+   */
+  const getIconSize = () => {
+    switch (size) {
+      case 'large':
+        return 32;
+      case 'small':
+        return 16;
+
+      default:
+        return 16;
+    }
+  };
+
+  /**
    * export type style
    */
   const getTypeStyle = () => {
@@ -32,11 +47,7 @@ export default function IconButton(props) {
       case 'primary':
         return {backgroundColor: theme.colors.primary};
       case 'secondary':
-        return {
-          backgroundColor: theme.colors.card,
-          borderWidth: 1,
-          borderColor: theme.colors.border,
-        };
+        return {};
       case 'outline':
         return {
           backgroundColor: theme.colors.card,
@@ -47,8 +58,6 @@ export default function IconButton(props) {
         return {
           backgroundColor: theme.colors.border,
         };
-      case 'text':
-        return {};
 
       default:
         return {backgroundColor: theme.colors.primary};
@@ -88,6 +97,7 @@ export default function IconButton(props) {
       <Icon
         name={name ?? 'help-circle'}
         color={getIconColor()}
+        size={getIconSize()}
         type={source}
         style={iconStyle}
       />
