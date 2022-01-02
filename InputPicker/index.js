@@ -2,13 +2,14 @@ import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Text, Icon, SizedBox} from '@components';
-import {useTheme} from '@configs';
+import {Styles, useTheme} from '@configs';
 import styles from './styles';
 
 export default function InputPicker(props) {
   const {theme} = useTheme();
   const {
     style,
+    onPress,
     size,
     label,
     info,
@@ -104,23 +105,28 @@ export default function InputPicker(props) {
     }
   };
 
-  /**
-   * build trailing
-   */
-  const buildTrailing = () => {
-    if (trailing) {
-      return <View style={styles.trailingContent}>{trailing}</View>;
-    }
-  };
-
   return (
     <View style={[styles.container, style]}>
-      <View style={[getSizeStyle(), {borderColor: getBorderColor()}]}>
+      <TouchableOpacity
+        style={[getSizeStyle(), {borderColor: getBorderColor()}]}
+        onPress={onPress}>
         <View style={styles.rowContent}>
-          <Text typography={getTypography()} weight={getWeight()}>
+          <Text
+            typography={getTypography()}
+            weight={getWeight()}
+            type={value ? 'primary' : 'secondary'}
+            style={Styles.flex}>
             {value ?? placeholder}
           </Text>
-          {buildTrailing()}
+          <View style={styles.trailingContent}>
+            {trailing ?? (
+              <Icon
+                name="chevron-down"
+                size={getIconSizeStyle()}
+                color={theme.colors.primary}
+              />
+            )}
+          </View>
           <View
             style={[styles.infoContent, {backgroundColor: theme.colors.card}]}>
             <Text typography="subtitle" type="secondary">
@@ -129,7 +135,7 @@ export default function InputPicker(props) {
             {buildInfo()}
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
       <SizedBox height={8} />
       <Text typography="subtitle" color="error">
         {error}
@@ -140,6 +146,7 @@ export default function InputPicker(props) {
 
 InputPicker.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  onPress: PropTypes.func,
   size: PropTypes.oneOf(['large', 'small']),
   label: PropTypes.string,
   value: PropTypes.string,
@@ -152,6 +159,7 @@ InputPicker.propTypes = {
 
 InputPicker.defaultProps = {
   style: {},
+  onPress: () => {},
   size: 'small',
   label: 'Label',
   value: null,

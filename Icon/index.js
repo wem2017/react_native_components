@@ -17,56 +17,56 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import {useTheme} from '@configs';
 import styles from './styles';
 
-export default function Icon(props) {
+export default function Index(props) {
   const {theme} = useTheme();
   const {style, type, enableRTL} = props;
-  let Component;
+  let Icon;
   switch (type) {
     case 'AntDesign':
-      Component = AntDesign;
+      Icon = AntDesign;
       break;
     case 'Entypo':
-      Component = Entypo;
+      Icon = Entypo;
       break;
     case 'EvilIcons':
-      Component = EvilIcons;
+      Icon = EvilIcons;
       break;
     case 'Feather':
-      Component = Feather;
+      Icon = Feather;
       break;
     case 'FontAwesome':
-      Component = FontAwesome;
+      Icon = FontAwesome;
       break;
     case 'FontAwesome5':
-      Component = FontAwesome5;
+      Icon = FontAwesome5;
       break;
     case 'FontAwesome5Pro':
-      Component = FontAwesome5Pro;
+      Icon = FontAwesome5Pro;
       break;
     case 'Fontisto':
-      Component = Fontisto;
+      Icon = Fontisto;
       break;
     case 'Foundation':
-      Component = Foundation;
+      Icon = Foundation;
       break;
     case 'Ionicons':
-      Component = Ionicons;
+      Icon = Ionicons;
       break;
     case 'MaterialCommunityIcons':
-      Component = MaterialCommunityIcons;
+      Icon = MaterialCommunityIcons;
       break;
     case 'MaterialIcons':
-      Component = MaterialIcons;
+      Icon = MaterialIcons;
       break;
     case 'Octicons':
-      Component = Octicons;
+      Icon = Octicons;
       break;
     default:
-      Component = MaterialCommunityIcons;
+      Icon = MaterialCommunityIcons;
       break;
   }
   return (
-    <Component
+    <Icon
       style={StyleSheet.flatten([enableRTL && styles.styleRTL, style])}
       color={theme.colors.text}
       {...props}
@@ -74,7 +74,7 @@ export default function Icon(props) {
   );
 }
 
-Icon.propTypes = {
+Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   name: PropTypes.string,
   size: PropTypes.number,
@@ -96,7 +96,7 @@ Icon.propTypes = {
   enableRTL: PropTypes.bool,
 };
 
-Icon.defaultProps = {
+Index.defaultProps = {
   style: {},
   name: 'help-circle-outline',
   size: 24,

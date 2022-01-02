@@ -34,8 +34,8 @@ const Index = forwardRef((props, ref) => {
       snapPoints={animatedSnapPoints}
       handleHeight={animatedHandleHeight}
       contentHeight={animatedContentHeight}
-      keyboardBehavior={'interactive'}
-      keyboardBlurBehavior={'none'}
+      keyboardBehavior="interactive"
+      keyboardBlurBehavior="none"
       stackBehavior="push"
       onDismiss={onDismiss}
       handleComponent={() => (

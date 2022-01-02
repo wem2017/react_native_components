@@ -210,16 +210,14 @@ Index.propTypes = {
     'black',
   ]),
   type: PropTypes.oneOf(['primary', 'secondary']),
-  color: PropTypes.oneOf(['primary', 'secondary', 'white', 'error', 'none']),
+  color: PropTypes.oneOf(['primary', 'secondary', 'white', 'error']),
   children: PropTypes.node,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 Index.defaultProps = {
   typography: 'title',
   weight: 'regular',
   type: 'primary',
-  color: 'none',
+  color: null,
   children: '',
-  style: {},
 };

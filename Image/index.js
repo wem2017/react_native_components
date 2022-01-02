@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {Placeholder, PlaceholderMedia, Fade} from 'rn-placeholder';
+import {PlaceholderMedia, Fade} from 'rn-placeholder';
 import styles from './styles';
 export default function Image(props) {
   const {style, resizeMode} = props;
@@ -11,9 +11,9 @@ export default function Image(props) {
   const buildLoading = () => {
     if (loading) {
       return (
-        <Placeholder Animation={Fade} style={[styles.loading, style]}>
-          <PlaceholderMedia style={style} />
-        </Placeholder>
+        <View Animation={Fade} style={styles.placeholder}>
+          <PlaceholderMedia style={styles.image} />
+        </View>
       );
     }
   };

@@ -134,8 +134,8 @@ const Index = forwardRef((props, ref) => {
       ref={bottomSheetRef}
       backgroundStyle={[styles.container, {backgroundColor: theme.colors.card}]}
       snapPoints={snapPoints}
-      keyboardBehavior={'interactive'}
-      keyboardBlurBehavior={'none'}
+      keyboardBehavior="interactive"
+      keyboardBlurBehavior="none"
       stackBehavior="push"
       handleComponent={() => (
         <>
