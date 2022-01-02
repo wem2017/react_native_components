@@ -16,7 +16,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
   },
-  inputContent: {flex: 1, height: '100%'},
+  inputContent: {flex: 1},
   textLarge: {
     fontSize: 20,
     fontWeight: 'bold',

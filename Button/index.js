@@ -283,16 +283,15 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   type: PropTypes.oneOf(['primary', 'secondary', 'outline', 'text']),
   size: PropTypes.oneOf(['large', 'medium', 'small']),
   full: PropTypes.bool,
   disabled: PropTypes.bool,
-  leading: PropTypes.node,
-  trailing: PropTypes.node,
+  leading: PropTypes.element,
+  trailing: PropTypes.element,
   loading: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.string]),
+  children: PropTypes.string,
 };
 
 Button.defaultProps = {

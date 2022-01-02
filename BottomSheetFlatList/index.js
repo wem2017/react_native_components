@@ -59,7 +59,7 @@ Index.propTypes = {
   initHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   enablePanDownToClose: PropTypes.bool,
   onDismiss: PropTypes.func,
-  header: PropTypes.node,
+  header: PropTypes.element,
 };
 
 Index.defaultProps = {

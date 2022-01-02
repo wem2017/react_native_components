@@ -69,7 +69,7 @@ IconButton.propTypes = {
   type: PropTypes.oneOf(['primary', 'secondary', 'outline', 'disable']),
   size: PropTypes.oneOf(['large', 'small']),
   shape: PropTypes.oneOf(['circle', 'rectangle']),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 IconButton.defaultProps = {

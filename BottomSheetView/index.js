@@ -68,7 +68,7 @@ const Index = forwardRef((props, ref) => {
 Index.propTypes = {
   enablePanDownToClose: PropTypes.bool,
   onDismiss: PropTypes.func,
-  header: PropTypes.node,
+  header: PropTypes.element,
   children: PropTypes.node,
 };
 

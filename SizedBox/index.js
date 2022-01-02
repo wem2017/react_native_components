@@ -10,7 +10,7 @@ export default function SizedBox(props) {
 SizedBox.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
-  children: PropTypes.node,
+  children: PropTypes.element,
 };
 
 SizedBox.defaultProps = {
