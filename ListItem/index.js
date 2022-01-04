@@ -7,7 +7,7 @@ import styles from './styles';
 
 export default function ListItem(props) {
   const {theme} = useTheme();
-  const {style, size, icon, title, subtitle} = props;
+  const {style, size, leading, trailing, title, subtitle} = props;
 
   /**
    * export style for item
@@ -69,10 +69,10 @@ export default function ListItem(props) {
 
   return (
     <TouchableOpacity {...props} style={itemStyle}>
-      {icon && (
+      {leading && (
         <View style={[Styles.row, {paddingRight: spaceBySize()}]}>
           <SizedBox width={size} height={size}>
-            {icon}
+            {leading}
           </SizedBox>
         </View>
       )}
@@ -85,20 +85,27 @@ export default function ListItem(props) {
         </Text>
         {buildSubTitle()}
       </View>
+      {trailing && (
+        <SizedBox width={size} height={size}>
+          {trailing}
+        </SizedBox>
+      )}
     </TouchableOpacity>
   );
 }
 
 ListItem.propTypes = {
   size: PropTypes.oneOf([16, 24, 32, 46, 40]),
-  icon: PropTypes.element,
+  leading: PropTypes.element,
+  trailing: PropTypes.element,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
 };
 
 ListItem.defaultProps = {
   size: 24,
-  icon: null,
+  leading: null,
+  trailing: null,
   title: 'Title',
   subtitle: null,
 };
