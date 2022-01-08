@@ -115,6 +115,7 @@ export default function InputPicker(props) {
             typography={getTypography()}
             weight={getWeight()}
             type={value ? 'primary' : 'secondary'}
+            numberOfLines={1}
             style={Styles.flex}>
             {value ?? placeholder}
           </Text>

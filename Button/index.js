@@ -295,7 +295,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  style: {},
   textStyle: {},
   type: 'primary',
   size: 'large',
