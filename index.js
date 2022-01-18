@@ -17,7 +17,7 @@ import BottomSheetPicker from './BottomSheetPicker';
 import SearchInput from './SearchInput';
 import PopupAlert from './PopupAlert';
 import PopupOTP from './PopupOTP';
-import CornerStone from './CornerStone';
+import Carousel from './Carousel';
 import ListItem from './ListItem';
 import ProductItem from './ProductItem';
 import InputPicker from './InputPicker';
@@ -43,7 +43,7 @@ export {
   SearchInput,
   PopupAlert,
   PopupOTP,
-  CornerStone,
+  Carousel,
   ListItem,
   ProductItem,
   InputPicker,

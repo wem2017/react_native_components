@@ -4,7 +4,6 @@ import {Colors, Opacity} from '@configs';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 16,
     overflow: 'hidden',
     borderRadius: 12,
   },

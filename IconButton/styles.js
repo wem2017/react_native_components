@@ -7,6 +7,7 @@ export default StyleSheet.create({
     borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
   },
   small: {
     height: 36,
@@ -14,5 +15,6 @@ export default StyleSheet.create({
     borderRadius: 18,
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
   },
 });

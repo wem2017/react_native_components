@@ -7,7 +7,7 @@ import {Colors, Images, Styles, useTheme} from '@configs';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-function CornerStone(props) {
+function Index(props) {
   const {theme} = useTheme();
   const {width} = useWindowDimensions();
   const {data, onChange, onPress, style} = props;
@@ -69,14 +69,14 @@ function CornerStone(props) {
   );
 }
 
-CornerStone.propTypes = {
+Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   data: PropTypes.array,
   onPress: PropTypes.func,
   onChange: PropTypes.func,
 };
 
-CornerStone.defaultProps = {
+Index.defaultProps = {
   style: {},
   data: [
     {
@@ -92,4 +92,4 @@ CornerStone.defaultProps = {
   onChange: item => {},
 };
 
-export default memo(CornerStone);
+export default memo(Index);
