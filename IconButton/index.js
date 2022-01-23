@@ -74,7 +74,7 @@ IconButton.propTypes = {
 
 IconButton.defaultProps = {
   type: 'secondary',
-  size: 'small',
+  size: 'large',
   shape: 'circle',
   children: <View />,
 };

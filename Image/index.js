@@ -3,18 +3,30 @@ import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {PlaceholderMedia, Fade} from 'rn-placeholder';
+import {Icon, Text} from '@components';
+import {Styles} from '@configs';
 import styles from './styles';
 export default function Image(props) {
-  const {style, resizeMode} = props;
-  const [loading, setLoading] = useState(false);
+  const {style, resizeMode, placeholder, error} = props;
+  const [loading, setLoading] = useState(true);
+  const [fail, setFail] = useState(false);
 
-  const buildLoading = () => {
-    if (loading) {
-      return (
-        <View Animation={Fade} style={styles.placeholder}>
-          <PlaceholderMedia style={styles.image} />
-        </View>
+  const buildContent = () => {
+    if (loading || fail) {
+      let content = placeholder ?? (
+        <PlaceholderMedia style={styles.image} Animation={Fade} />
       );
+      if (fail) {
+        content = error ?? (
+          <View style={Styles.flexCenter}>
+            <Icon name="error-outline" type="MaterialIcons" />
+            <Text typography="subtitle" type="secondary">
+              Can't load image
+            </Text>
+          </View>
+        );
+      }
+      return <View style={styles.placeholder}>{content}</View>;
     }
   };
 
@@ -26,8 +38,9 @@ export default function Image(props) {
         resizeMode={FastImage.resizeMode[resizeMode]}
         onLoad={() => setLoading(true)}
         onLoadEnd={() => setLoading(false)}
+        onError={() => setFail(true)}
       />
-      {buildLoading()}
+      {buildContent()}
     </View>
   );
 }
@@ -35,11 +48,13 @@ export default function Image(props) {
 Image.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   resizeMode: PropTypes.oneOf(['contain', 'cover', 'stretch', 'center']),
-  placeholder: PropTypes.bool,
+  placeholder: PropTypes.element,
+  error: PropTypes.element,
 };
 
 Image.defaultProps = {
   style: {},
   resizeMode: 'cover',
-  placeholder: true,
+  placeholder: null,
+  error: null,
 };

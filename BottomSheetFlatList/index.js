@@ -12,7 +12,7 @@ import styles from './styles';
 
 const Index = forwardRef((props, ref) => {
   const {theme} = useTheme();
-  const bottomSheetRef = useRef(null);
+  const bottomSheetRef = useRef();
   useImperativeHandle(ref, () => bottomSheetRef.current);
   const {bottom} = useSafeAreaInsets();
 

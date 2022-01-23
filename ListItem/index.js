@@ -54,11 +54,7 @@ export default function ListItem(props) {
   const buildSubTitle = () => {
     if (subtitle && size !== 16) {
       return (
-        <Text
-          typography="subtitle"
-          type="secondary"
-          style={styles.subTitle}
-          numberOfLines={1}>
+        <Text typography="subtitle" type="secondary" style={styles.subTitle}>
           {subtitle}
         </Text>
       );

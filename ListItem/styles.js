@@ -2,31 +2,31 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   item16: {
-    height: 34,
+    minHeight: 34,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
   },
   item24: {
-    height: 48,
+    minHeight: 48,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
   },
   item32: {
-    height: 60,
+    minHeight: 60,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
   },
   item36: {
-    height: 62,
+    minHeight: 62,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
   },
   item40: {
-    height: 64,
+    minHeight: 64,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
@@ -36,6 +36,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-start',
+    paddingVertical: 8,
   },
   subTitle: {
     marginTop: 4,

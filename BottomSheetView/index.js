@@ -14,7 +14,7 @@ import styles from './styles';
 const Index = forwardRef((props, ref) => {
   const {theme} = useTheme();
   const initialSnapPoints = useMemo(() => ['CONTENT_HEIGHT'], []);
-  const bottomSheetRef = useRef(null);
+  const bottomSheetRef = useRef();
   useImperativeHandle(ref, () => bottomSheetRef.current);
   const {bottom} = useSafeAreaInsets();
 

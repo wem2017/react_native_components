@@ -112,8 +112,8 @@ const MemoList = memo(
 
 const Index = forwardRef((props, ref) => {
   const {theme} = useTheme();
-  const bottomSheetRef = useRef(null);
-  const listRef = useRef(null);
+  const bottomSheetRef = useRef();
+  const listRef = useRef();
   const {t} = useTranslation();
 
   useImperativeHandle(ref, () => bottomSheetRef.current);
