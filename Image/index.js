@@ -4,9 +4,10 @@ import {View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {PlaceholderMedia, Fade} from 'rn-placeholder';
 import {Icon, Text} from '@components';
-import {Styles} from '@configs';
+import {Styles, useTheme} from '@configs';
 import styles from './styles';
 export default function Image(props) {
+  const {theme} = useTheme();
   const {style, resizeMode, placeholder, error} = props;
   const [loading, setLoading] = useState(true);
   const [fail, setFail] = useState(false);
@@ -18,7 +19,8 @@ export default function Image(props) {
       );
       if (fail) {
         content = error ?? (
-          <View style={Styles.flexCenter}>
+          <View
+            style={[Styles.flexCenter, {backgroundColor: theme.colors.border}]}>
             <Icon name="error-outline" type="MaterialIcons" />
             <Text typography="subtitle" type="secondary">
               Can't load image
