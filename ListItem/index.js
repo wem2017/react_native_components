@@ -54,7 +54,11 @@ export default function ListItem(props) {
   const buildSubTitle = () => {
     if (subtitle && size !== 16) {
       return (
-        <Text typography="subtitle" type="secondary" style={styles.subTitle} numberOfLines={2}>
+        <Text
+          typography="subtitle"
+          type="secondary"
+          style={styles.subTitle}
+          numberOfLines={2}>
           {subtitle}
         </Text>
       );
@@ -100,6 +104,7 @@ ListItem.propTypes = {
   trailing: PropTypes.element,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 ListItem.defaultProps = {
@@ -108,4 +113,5 @@ ListItem.defaultProps = {
   trailing: null,
   title: 'Title',
   subtitle: null,
+  style: {},
 };
