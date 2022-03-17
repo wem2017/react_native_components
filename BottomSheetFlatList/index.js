@@ -1,4 +1,10 @@
-import React, {useRef, useMemo, forwardRef, useImperativeHandle} from 'react';
+import React, {
+  useRef,
+  useMemo,
+  forwardRef,
+  useImperativeHandle,
+  memo,
+} from 'react';
 import {View} from 'react-native';
 import PropTypes from 'prop-types';
 import {
@@ -11,13 +17,11 @@ import {useTheme} from '@configs';
 import styles from './styles';
 
 const Index = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => bottomSheetRef.current);
   const {theme} = useTheme();
   const bottomSheetRef = useRef();
-  useImperativeHandle(ref, () => bottomSheetRef.current);
   const {bottom} = useSafeAreaInsets();
-
   const {header, initHeight, onDismiss, enablePanDownToClose} = props;
-
   const snapPoints = useMemo(() => [initHeight, '100%'], [initHeight]);
 
   return (
@@ -69,4 +73,4 @@ Index.defaultProps = {
   header: null,
 };
 
-export default Index;
+export default memo(Index);

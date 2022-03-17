@@ -19,11 +19,10 @@ import {Styles, useTheme, Images, Opacity} from '@configs';
 import styles from './styles';
 
 /**
- * Memo Search Input
+ * Search Input
  */
-const MemoInput = memo(({value, onChangeText}) => {
+const Input = memo(({value, onChangeText}) => {
   const [keyword, setKeyword] = useState(value);
-
   return (
     <SearchInput
       type="bottomsheet"
@@ -37,9 +36,9 @@ const MemoInput = memo(({value, onChangeText}) => {
 });
 
 /**
- * Memo List
+ * List
  */
-const MemoList = memo(
+const List = memo(
   forwardRef((props, ref) => {
     const {theme} = useTheme();
     const [list, setList] = useState(props.data);
@@ -92,7 +91,6 @@ const MemoList = memo(
         </TouchableOpacity>
       );
     };
-
     return (
       <BottomSheetFlatList
         contentContainerStyle={[
@@ -175,7 +173,7 @@ const Index = forwardRef((props, ref) => {
           </View>
           {search && (
             <View style={styles.searchContent}>
-              <MemoInput type="bottomsheet" onChangeText={onChangeText} />
+              <Input type="bottomsheet" onChangeText={onChangeText} />
             </View>
           )}
         </SafeAreaView>
@@ -188,7 +186,7 @@ const Index = forwardRef((props, ref) => {
         />
       )}
       enablePanDownToClose={true}>
-      <MemoList ref={listRef} data={data} selected={selected} />
+      <List ref={listRef} data={data} selected={selected} />
     </BottomSheetModal>
   );
 });
@@ -222,4 +220,4 @@ Index.defaultProps = {
   onSelect: value => {},
 };
 
-export default Index;
+export default memo(Index);
