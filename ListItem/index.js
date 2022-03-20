@@ -5,7 +5,7 @@ import {SizedBox, Text} from '@components';
 import {Styles, useTheme} from '@configs';
 import styles from './styles';
 
-export default function ListItem(props) {
+const Index = props => {
   const {theme} = useTheme();
   const {style, size, leading, trailing, title, subtitle} = props;
 
@@ -96,9 +96,9 @@ export default function ListItem(props) {
       )}
     </TouchableOpacity>
   );
-}
+};
 
-ListItem.propTypes = {
+Index.propTypes = {
   size: PropTypes.oneOf([16, 24, 32, 46, 40]),
   leading: PropTypes.element,
   trailing: PropTypes.element,
@@ -107,7 +107,7 @@ ListItem.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-ListItem.defaultProps = {
+Index.defaultProps = {
   size: 24,
   leading: null,
   trailing: null,
@@ -115,3 +115,5 @@ ListItem.defaultProps = {
   subtitle: null,
   style: {},
 };
+
+export default Index;

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import {Text} from '@components';
 import styles from './styles';
 
-export default function Button(props) {
+const Index = props => {
   const {theme} = useTheme();
   const {
     style,
@@ -280,9 +280,9 @@ export default function Button(props) {
       {buildTrailing()}
     </TouchableOpacity>
   );
-}
+};
 
-Button.propTypes = {
+Index.propTypes = {
   textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   type: PropTypes.oneOf(['primary', 'secondary', 'outline', 'text']),
   size: PropTypes.oneOf(['large', 'medium', 'small']),
@@ -294,7 +294,7 @@ Button.propTypes = {
   children: PropTypes.string,
 };
 
-Button.defaultProps = {
+Index.defaultProps = {
   textStyle: {},
   type: 'primary',
   size: 'large',
@@ -305,3 +305,5 @@ Button.defaultProps = {
   loading: false,
   children: 'Button',
 };
+
+export default Index;

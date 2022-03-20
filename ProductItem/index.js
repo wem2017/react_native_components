@@ -6,7 +6,7 @@ import {useTheme, Styles} from '@configs';
 import {getCurrency} from '@utils';
 import styles from './styles';
 
-export default function ProductItem(props) {
+const Index = props => {
   const {theme} = useTheme();
   const {style, item, onPress} = props;
 
@@ -48,9 +48,9 @@ export default function ProductItem(props) {
       </View>
     </TouchableOpacity>
   );
-}
+};
 
-ProductItem.propTypes = {
+Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   item: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -64,8 +64,10 @@ ProductItem.propTypes = {
   onPress: PropTypes.func,
 };
 
-ProductItem.defaultProps = {
+Index.defaultProps = {
   style: {},
   item: {},
   onPress: () => {},
 };
+
+export default Index;

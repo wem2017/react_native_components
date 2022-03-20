@@ -73,4 +73,12 @@ Index.defaultProps = {
   header: null,
 };
 
-export default memo(Index);
+function isEqual(prevProps, nextProps) {
+  return (
+    prevProps?.initHeight === nextProps?.initHeight &&
+    prevProps?.enablePanDownToClose === nextProps?.enablePanDownToClose &&
+    prevProps?.header === nextProps?.header
+  );
+}
+
+export default memo(Index, isEqual);

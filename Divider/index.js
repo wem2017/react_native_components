@@ -3,7 +3,8 @@ import {View} from 'react-native';
 import PropTypes from 'prop-types';
 import {useTheme} from '@configs';
 import styles from './styles';
-export default function Divider(props) {
+
+const Index = props => {
   const {theme} = useTheme();
   const {color, thickness} = props;
   return (
@@ -17,14 +18,16 @@ export default function Divider(props) {
       ]}
     />
   );
-}
+};
 
-Divider.propTypes = {
+Index.propTypes = {
   color: PropTypes.string,
   thickness: PropTypes.number,
 };
 
-Divider.defaultProps = {
+Index.defaultProps = {
   color: null,
   thickness: 1,
 };
+
+export default Index;

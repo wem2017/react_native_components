@@ -6,7 +6,7 @@ import {Styles, useTheme} from '@configs';
 import Navigator from '@navigator';
 import styles from './styles';
 
-export default function PopupAlert(props) {
+const Index = props => {
   const {theme} = useTheme();
   const {
     image,
@@ -135,9 +135,9 @@ export default function PopupAlert(props) {
       </View>
     </View>
   );
-}
+};
 
-PopupAlert.propTypes = {
+Index.propTypes = {
   image: PropTypes.any,
   title: PropTypes.string,
   message: PropTypes.node,
@@ -153,7 +153,7 @@ PopupAlert.propTypes = {
   buttonType: PropTypes.oneOf(['primary', 'text']),
 };
 
-PopupAlert.defaultProps = {
+Index.defaultProps = {
   image: null,
   title: 'Tiêu đề',
   message: 'Đây là nội dung cho văn bản, bạn có thể thay đổi nhiều thông điệp',
@@ -165,3 +165,5 @@ PopupAlert.defaultProps = {
   imageType: 'full',
   buttonType: 'primary',
 };
+
+export default Index;

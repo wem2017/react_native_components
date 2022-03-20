@@ -6,7 +6,7 @@ import {Styles, useTheme, Colors} from '@configs';
 import Navigator from '@navigator';
 import styles from './styles';
 
-export default function PopupOTP(props) {
+const Index = props => {
   const {theme} = useTheme();
   const otpRef = useRef();
 
@@ -120,9 +120,9 @@ export default function PopupOTP(props) {
       </TouchableOpacity>
     </View>
   );
-}
+};
 
-PopupOTP.propTypes = {
+Index.propTypes = {
   title: PropTypes.string,
   time: PropTypes.number,
   length: PropTypes.number,
@@ -131,7 +131,7 @@ PopupOTP.propTypes = {
   onClose: PropTypes.func,
 };
 
-PopupOTP.defaultProps = {
+Index.defaultProps = {
   title: 'Tiêu đề',
   time: 60,
   length: 4,
@@ -139,3 +139,5 @@ PopupOTP.defaultProps = {
   onResendOTP: () => {},
   onClose: () => {},
 };
+
+export default Index;

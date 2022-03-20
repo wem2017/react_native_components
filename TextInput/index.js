@@ -1,4 +1,10 @@
-import React, {useState, useRef, forwardRef, useImperativeHandle} from 'react';
+import React, {
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  memo,
+} from 'react';
 import {TextInput, View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Text, Icon, getFontFamily, SizedBox} from '@components';
@@ -56,7 +62,7 @@ const Index = forwardRef((props, ref) => {
    * get text style
    */
   const getTextStyle = () => {
-    let textStyle = styles.textLarge;
+    let textStyle;
     switch (size) {
       case 'large':
         textStyle = styles.textLarge;

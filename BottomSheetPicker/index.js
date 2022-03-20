@@ -127,6 +127,7 @@ const Index = forwardRef((props, ref) => {
     listRef.current?.onChangeText(value);
   };
 
+  console.log('CCC', props);
   return (
     <BottomSheetModal
       ref={bottomSheetRef}
@@ -220,4 +221,14 @@ Index.defaultProps = {
   onSelect: value => {},
 };
 
-export default memo(Index);
+function isEqual(prevProps, nextProps) {
+  return (
+    prevProps?.search === nextProps?.search &&
+    prevProps?.title === nextProps?.title &&
+    prevProps?.initHeight === nextProps?.initHeight &&
+    prevProps?.data === nextProps?.data &&
+    prevProps?.selected?.value === nextProps?.selected?.value
+  );
+}
+
+export default memo(Index, isEqual);

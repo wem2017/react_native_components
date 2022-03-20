@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {useTheme} from '@configs';
 import styles from './styles';
 
-export default function IconButton(props) {
+const Index = props => {
   const {theme} = useTheme();
   const {style, type, size, shape, children} = props;
 
@@ -63,18 +63,20 @@ export default function IconButton(props) {
       {children}
     </TouchableOpacity>
   );
-}
+};
 
-IconButton.propTypes = {
+Index.propTypes = {
   type: PropTypes.oneOf(['primary', 'secondary', 'outline', 'disable']),
   size: PropTypes.oneOf(['large', 'small']),
   shape: PropTypes.oneOf(['circle', 'rectangle']),
   children: PropTypes.element.isRequired,
 };
 
-IconButton.defaultProps = {
+Index.defaultProps = {
   type: 'secondary',
   size: 'large',
   shape: 'circle',
   children: <View />,
 };
+
+export default Index;

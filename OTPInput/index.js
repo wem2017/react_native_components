@@ -6,7 +6,7 @@ import {getFontFamily, Text} from '@components';
 import {useTheme} from '@configs';
 import styles from './styles';
 
-const OTPInput = forwardRef((props, ref) => {
+const Index = forwardRef((props, ref) => {
   const otpRef = useRef();
   const {theme, font} = useTheme();
   const {style, error} = props;
@@ -46,14 +46,14 @@ const OTPInput = forwardRef((props, ref) => {
   );
 });
 
-OTPInput.propTypes = {
+Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   error: PropTypes.string,
 };
 
-OTPInput.defaultProps = {
+Index.defaultProps = {
   style: {},
   error: null,
 };
 
-export default OTPInput;
+export default Index;

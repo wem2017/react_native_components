@@ -70,7 +70,7 @@ export const getFontFamily = ({
       return `${fontFamily}-${SFProText[fontWeight]}`;
   }
 };
-export default function Index(props) {
+const Index = props => {
   const {theme, font} = useTheme();
   const {typography, weight, type, color, children, style} = props;
 
@@ -185,7 +185,7 @@ export default function Index(props) {
       {children ?? ' '}
     </Text>
   );
-}
+};
 
 Index.propTypes = {
   typography: PropTypes.oneOf([
@@ -221,3 +221,5 @@ Index.defaultProps = {
   color: null,
   children: '',
 };
+
+export default Index;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Icon} from '@components';
 import {useTheme} from '@configs';
 
-export default function CheckBox(props) {
+const Index = props => {
   const {theme} = useTheme();
   const {style, value, disabled, size, shape, onPress} = props;
 
@@ -52,9 +52,9 @@ export default function CheckBox(props) {
       />
     </TouchableOpacity>
   );
-}
+};
 
-CheckBox.propTypes = {
+Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   value: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -63,7 +63,7 @@ CheckBox.propTypes = {
   shape: PropTypes.oneOf(['circle', 'rectangle']),
 };
 
-CheckBox.defaultProps = {
+Index.defaultProps = {
   style: {},
   value: false,
   disabled: false,
@@ -71,3 +71,5 @@ CheckBox.defaultProps = {
   onPress: () => {},
   shape: 'circle',
 };
+
+export default Index;

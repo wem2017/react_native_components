@@ -5,7 +5,7 @@ import {Text, Icon, SizedBox} from '@components';
 import {Styles, useTheme} from '@configs';
 import styles from './styles';
 
-export default function InputPicker(props) {
+const Index = props => {
   const {theme} = useTheme();
   const {
     style,
@@ -143,9 +143,9 @@ export default function InputPicker(props) {
       </Text>
     </View>
   );
-}
+};
 
-InputPicker.propTypes = {
+Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   onPress: PropTypes.func,
   size: PropTypes.oneOf(['large', 'small']),
@@ -158,7 +158,7 @@ InputPicker.propTypes = {
   trailing: PropTypes.element,
 };
 
-InputPicker.defaultProps = {
+Index.defaultProps = {
   style: {},
   onPress: () => {},
   size: 'small',
@@ -170,3 +170,5 @@ InputPicker.defaultProps = {
   onPressInfo: () => {},
   trailing: null,
 };
+
+export default Index;

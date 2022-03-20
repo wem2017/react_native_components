@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {memo, useState} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -6,7 +6,8 @@ import {PlaceholderMedia, Fade} from 'rn-placeholder';
 import {Icon, Text} from '@components';
 import {Styles, useTheme} from '@configs';
 import styles from './styles';
-export default function Image(props) {
+
+const Index = props => {
   const {theme} = useTheme();
   const {style, resizeMode, placeholder, error} = props;
   const [loading, setLoading] = useState(true);
@@ -45,18 +46,20 @@ export default function Image(props) {
       {buildContent()}
     </View>
   );
-}
+};
 
-Image.propTypes = {
+Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   resizeMode: PropTypes.oneOf(['contain', 'cover', 'stretch', 'center']),
   placeholder: PropTypes.element,
   error: PropTypes.element,
 };
 
-Image.defaultProps = {
+Index.defaultProps = {
   style: {},
   resizeMode: 'cover',
   placeholder: null,
   error: null,
 };
+
+export default memo(Index);

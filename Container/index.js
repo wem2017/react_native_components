@@ -5,7 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
 import {Styles} from '@configs';
 
-export default function Container(props) {
+const Index = props => {
   const headerHeight = useHeaderHeight();
   const {style, children, edges} = props;
   return (
@@ -21,16 +21,18 @@ export default function Container(props) {
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
-}
+};
 
-Container.propTypes = {
+Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   children: PropTypes.node,
   edges: PropTypes.array,
 };
 
-Container.defaultProps = {
+Index.defaultProps = {
   styles: {},
   children: null,
   edges: ['bottom'],
 };
+
+export default Index;

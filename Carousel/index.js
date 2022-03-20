@@ -16,7 +16,7 @@ function Index(props) {
   const renderItem = ({item, index}) => {
     return (
       <View style={Styles.flex}>
-        <Image source={item.image} style={Styles.flex} />
+        <Image source={item.image} style={Styles.flex} resizeMode="cover" />
         <TouchableOpacity style={styles.actionContent} onPress={onPress}>
           <View style={Styles.rowCenter}>
             <Text typography="caption" weight="bold" color="white">

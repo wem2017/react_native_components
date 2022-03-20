@@ -17,7 +17,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import {useTheme} from '@configs';
 import styles from './styles';
 
-export default function Index(props) {
+const Index = props => {
   const {theme} = useTheme();
   const {style, type, enableRTL} = props;
   let Icon;
@@ -72,7 +72,7 @@ export default function Index(props) {
       {...props}
     />
   );
-}
+};
 
 Index.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -103,3 +103,5 @@ Index.defaultProps = {
   type: 'MaterialCommunityIcons',
   enableRTL: false,
 };
+
+export default Index;
