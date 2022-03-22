@@ -127,7 +127,6 @@ const Index = forwardRef((props, ref) => {
     listRef.current?.onChangeText(value);
   };
 
-  console.log('CCC', props);
   return (
     <BottomSheetModal
       ref={bottomSheetRef}
