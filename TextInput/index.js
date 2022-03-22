@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-  memo,
-} from 'react';
+import React, {useState, useRef, forwardRef, useImperativeHandle} from 'react';
 import {TextInput, View, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Text, Icon, getFontFamily, SizedBox} from '@components';

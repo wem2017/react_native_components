@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useMemo,
-  forwardRef,
-  useImperativeHandle,
-  memo,
-} from 'react';
+import React, {useRef, useMemo, forwardRef, useImperativeHandle} from 'react';
 import {View} from 'react-native';
 import PropTypes from 'prop-types';
 import {
@@ -73,12 +67,4 @@ Index.defaultProps = {
   header: null,
 };
 
-function isEqual(prevProps, nextProps) {
-  return (
-    prevProps?.initHeight === nextProps?.initHeight &&
-    prevProps?.enablePanDownToClose === nextProps?.enablePanDownToClose &&
-    prevProps?.header === nextProps?.header
-  );
-}
-
-export default memo(Index, isEqual);
+export default Index;

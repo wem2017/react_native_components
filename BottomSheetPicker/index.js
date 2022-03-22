@@ -221,14 +221,4 @@ Index.defaultProps = {
   onSelect: value => {},
 };
 
-function isEqual(prevProps, nextProps) {
-  return (
-    prevProps?.search === nextProps?.search &&
-    prevProps?.title === nextProps?.title &&
-    prevProps?.initHeight === nextProps?.initHeight &&
-    prevProps?.data === nextProps?.data &&
-    prevProps?.selected?.value === nextProps?.selected?.value
-  );
-}
-
-export default memo(Index, isEqual);
+export default Index;
