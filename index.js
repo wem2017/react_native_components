@@ -12,7 +12,6 @@ import IconButton from './IconButton';
 import OTPInput from './OTPInput';
 import BottomSheetView from './BottomSheetView';
 import BottomSheetScrollView from './BottomSheetScrollView';
-import BottomSheetFlatList from './BottomSheetFlatList';
 import BottomSheetPicker from './BottomSheetPicker';
 import SearchInput from './SearchInput';
 import PopupAlert from './PopupAlert';
@@ -38,7 +37,6 @@ export {
   OTPInput,
   BottomSheetView,
   BottomSheetScrollView,
-  BottomSheetFlatList,
   BottomSheetPicker,
   SearchInput,
   PopupAlert,

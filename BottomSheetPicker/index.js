@@ -11,10 +11,11 @@ import {
   BottomSheetFlatList,
   BottomSheetBackdrop,
 } from '@gorhom/bottom-sheet';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {View, TouchableOpacity} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import PropTypes from 'prop-types';
-import {Text, SearchInput, Icon, Image, SafeAreaView} from '@components';
+import {Text, SearchInput, Icon, Image} from '@components';
 import {Styles, useTheme, Images, Opacity} from '@configs';
 import styles from './styles';
 
@@ -109,6 +110,7 @@ const List = memo(
 );
 
 const Index = forwardRef((props, ref) => {
+  const insets = useSafeAreaInsets();
   const {theme} = useTheme();
   const bottomSheetRef = useRef();
   const listRef = useRef();
@@ -118,7 +120,7 @@ const Index = forwardRef((props, ref) => {
 
   const {search, title, data, initHeight, selected, onSelect} = props;
 
-  const snapPoints = useMemo(() => [initHeight, '94%'], [initHeight]);
+  const snapPoints = useMemo(() => [initHeight, '100%'], [initHeight]);
 
   /**
    * on change search
@@ -130,13 +132,17 @@ const Index = forwardRef((props, ref) => {
   return (
     <BottomSheetModal
       ref={bottomSheetRef}
-      backgroundStyle={[styles.container, {backgroundColor: theme.colors.card}]}
+      backgroundStyle={styles.container}
       snapPoints={snapPoints}
       keyboardBehavior="interactive"
       keyboardBlurBehavior="none"
       stackBehavior="push"
       handleComponent={() => (
-        <SafeAreaView edges={['right', 'top', 'left']}>
+        <View
+          style={[
+            styles.handle,
+            {backgroundColor: theme.colors.card, marginTop: insets.top},
+          ]}>
           <View style={styles.indicatorContainer}>
             <View
               style={[styles.indicator, {backgroundColor: theme.colors.card}]}
@@ -176,7 +182,7 @@ const Index = forwardRef((props, ref) => {
               <Input type="bottomsheet" onChangeText={onChangeText} />
             </View>
           )}
-        </SafeAreaView>
+        </View>
       )}
       backdropComponent={backdropProps => (
         <BottomSheetBackdrop
@@ -186,7 +192,9 @@ const Index = forwardRef((props, ref) => {
         />
       )}
       enablePanDownToClose={true}>
-      <List ref={listRef} data={data} selected={selected} />
+      <View style={{flex: 1, backgroundColor: theme.colors.card}}>
+        <List ref={listRef} data={data} selected={selected} />
+      </View>
     </BottomSheetModal>
   );
 });

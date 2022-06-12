@@ -16,7 +16,7 @@ const Index = forwardRef((props, ref) => {
   const bottomSheetRef = useRef();
   const {bottom} = useSafeAreaInsets();
   const {header, initHeight, children, onDismiss, enablePanDownToClose} = props;
-  const snapPoints = useMemo(() => [initHeight, '94%'], [initHeight]);
+  const snapPoints = useMemo(() => [initHeight, '100%'], [initHeight]);
 
   return (
     <BottomSheetModal

@@ -15,9 +15,12 @@ export default StyleSheet.create({
     borderRadius: 4,
   },
   container: {
+    overflow: 'hidden',
+    backgroundColor: 'transparent',
+  },
+  handle: {
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
-    overflow: 'hidden',
   },
   contentTitle: {
     flexDirection: 'row',
